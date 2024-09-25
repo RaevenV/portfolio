@@ -25,8 +25,9 @@ export default function NavbarMain() {
       gsap.fromTo(
         smallnav,
         { right: "100%", opacity: 1 },
-        { right: "19%", duration: 0.5, ease: "power2.out" }
+        { right: "18%", duration: 0.5, ease: "power2.in" }
       );
+
       menu?.classList.add("hidden");
       close?.classList.remove("hidden");
     });
@@ -73,23 +74,23 @@ export default function NavbarMain() {
     >
       <div
         id="small-nav"
-        className="md:hidden absolute top-[30px] right-[100%] bg-slate-900 rounded-3xl border-1  w-2/3 md:w-1/2 h-screen text-white justify-center items-center"
+        className="md:hidden absolute top-[30px] right-[100%] bg-slate-900 rounded-3xl border-1  w-[70%] md:w-1/2 h-screen text-white justify-center items-center"
       >
         <div className="h-1/2 flex flex-col justify-center items-center w-full gap-y-4">
           <a
-            className="font-semibold w-[90%] h-[15%]  flex justify-center items-center rounded-2xl hover:bg-[#31d2f5] transition-colors ease-in duration-400 hover:text-slate-900"
+            className="font-semibold w-[90%] h-[15%]  flex justify-center items-center rounded-2xl hover:bg-[#29aac7] transition-colors ease-in duration-200 hover:text-slate-900"
             href=""
           >
             Profile
           </a>
           <a
-            className="font-semibold w-[90%] h-[15%]  flex justify-center items-center rounded-2xl hover:bg-[#31d2f5] transition-colors ease-in duration-400 hover:text-slate-900"
+            className="font-semibold w-[90%] h-[15%]  flex justify-center items-center rounded-2xl hover:bg-[#29aac7] transition-colors ease-in duration-200 hover:text-slate-900"
             href=""
           >
             Projects
           </a>
           <a
-            className="font-semibold w-[90%] h-[15%]  flex justify-center items-center rounded-2xl hover:bg-[#31d2f5] transition-colors ease-in duration-400 hover:text-slate-900"
+            className="font-semibold w-[90%] h-[15%]  flex justify-center items-center rounded-2xl hover:bg-[#29aac7] transition-colors ease-in duration-200 hover:text-slate-900"
             href=""
           >
             Contact Me
@@ -104,7 +105,7 @@ export default function NavbarMain() {
           className="w-auto px-[4%] md:px-[0%] h-10 md:w-20 flex flex-col items-center justify-center hover:text-[#31d2f5] transition-colors duration-200 ease-in"
           href="#"
         >
-          <div className="mb-1 font-rowdies text-[20px]">RAEVEN</div>
+          <div className="mb-1 font-rowdies text-[16px] text-nowrap">RAEVEN VILLAREL</div>
         </a>
         <div className="w-20 h-full relative align-middle mb-2">
           <img
