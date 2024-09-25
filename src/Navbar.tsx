@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -6,51 +6,46 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function NavbarMain() {
 
-  
-  let menu = document.querySelector("#menu");
-  let close = document.querySelector("#close");
-  let smallnav = document.querySelector("#small-nav");
-
-  menu?.addEventListener("click", () => {
-    smallnav?.classList.remove("hidden");
-    smallnav?.classList.add("flex");
-
-    gsap.fromTo(
-      smallnav,
-      { right: "100%", opacity: 1 },
-      { right: "19%", duration: 0.5, ease: "power2.out" }
-    );
-
-    menu?.classList.add("hidden");
-    close?.classList.remove("hidden");
-  });
-
-  close?.addEventListener("click", () => {
-    gsap.to(smallnav, {
-      right: "100%",
-      duration: 0.5,
-      ease: "power2.in",
-      onComplete: () => {
-        smallnav?.classList.remove("flex");
-        smallnav?.classList.add("hidden");
-      },
-    });
-
-    menu?.classList.remove("hidden");
-    close?.classList.add("hidden");
-  });
-
   useEffect(() => {
+    const menu = document.querySelector("#menu");
+    const close = document.querySelector("#close");
+    const smallnav = document.querySelector("#small-nav");
     const links = document.querySelectorAll("#nav-links a"); // Select all links inside #nav-links
     const tl = gsap.timeline({
-      scrollTrigger: "#nav-container", 
+      scrollTrigger: "#nav-container",
     });
     tl.fromTo("#nav-container", { y: 0 }, { y: 25, duration: 0.3 }) // From 0 to 20
       .to("#nav-container", { y: 10, duration: 0.6 });
 
-    close?.classList.add("hidden")
+    close?.classList.add("hidden");
 
-    
+    menu?.addEventListener("click", () => {
+      smallnav?.classList.remove("hidden");
+      smallnav?.classList.add("flex");
+      gsap.fromTo(
+        smallnav,
+        { right: "100%", opacity: 1 },
+        { right: "19%", duration: 0.5, ease: "power2.out" }
+      );
+      menu?.classList.add("hidden");
+      close?.classList.remove("hidden");
+    });
+
+    close?.addEventListener("click", () => {
+      gsap.to(smallnav, {
+        right: "100%",
+        duration: 0.5,
+        ease: "power2.in",
+        onComplete: () => {
+          smallnav?.classList.remove("flex");
+          smallnav?.classList.add("hidden");
+        },
+      });
+
+      menu?.classList.remove("hidden");
+      close?.classList.add("hidden");
+    });
+
     links.forEach((link) => {
       const line = link.querySelector(".line");
       link.addEventListener("mouseenter", () => {
