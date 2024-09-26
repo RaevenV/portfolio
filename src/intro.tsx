@@ -52,7 +52,7 @@ export function Intro() {
 
       hoverTl.to(radio, {
         rotation: 480,
-        duration: 0.2,
+        duration: 1,
         ease: "power1.inOut",
         transformOrigin: "center",
       });
@@ -67,8 +67,7 @@ export function Intro() {
                 ease:"power1.out"
             });
 
-            hoverTl.play(0);
-            hoverTl.repeat(-1);
+            hoverTl.play(0).repeat(-1);
         });
 
         rolebox.addEventListener("mouseleave", () => {
