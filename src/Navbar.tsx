@@ -12,16 +12,14 @@ export default function NavbarMain() {
     const menu = document.querySelector("#menu");
     const close = document.querySelector("#close");
     const smallnav = document.querySelector("#small-nav");
-    const links = document.querySelectorAll("#nav-links a");
-    const links2 = document.querySelectorAll("#nav-links2 a");
-    const name = document.querySelector("#name");
+    const links = document.querySelectorAll(".nav-links a");
 
 
     const tl = gsap.timeline({
       scrollTrigger: "#nav-container",
     });
 
-    tl.fromTo("#nav-container", { y: 0 }, { y: 25, duration: 0.3 })
+    tl.fromTo("#nav-container", { y: 0 }, { y: 15, duration: 0.3 })
       .to("#nav-container", { y: 10, duration: 0.6 });
 
     close?.classList.add("hidden");
@@ -80,44 +78,6 @@ export default function NavbarMain() {
       });
     });
 
-    //small nav
-    links2.forEach((link) => {
-      const line = link.querySelector(".line");
-      link.addEventListener("mouseenter", () => {
-        gsap.fromTo(
-          line,
-          { width: "0%", opacity: 1 },
-          { width: "40%", duration: 0.15, ease: "power2.out" }
-        );
-      });
-      link.addEventListener("mouseleave", () => {
-        gsap.to(line, {
-          width: "0%",
-          duration: 0.5,
-          ease: "power2.out",
-          opacity: 0,
-        });
-      });
-    });
-
-    const line = name?.querySelector(".line");
-    if (line) {
-      name?.addEventListener("mouseenter", () => {
-        gsap.fromTo(
-          line,
-          { width: "0%", opacity: 1 },
-          { width: "100%", duration: 0.15, ease: "power2.out" }
-        );
-      });
-      name?.addEventListener("mouseleave", () => {
-        gsap.to(line, {
-          width: "0%",
-          duration: 0.5,
-          ease: "power2.out",
-          opacity: 0,
-        });
-      });
-    }
 
 
 
@@ -126,35 +86,32 @@ export default function NavbarMain() {
   return (
     <div
       id="nav-container"
-      className="relative top-[-12px] lg:sticky border-b-1  border-slate-800   h-20 w-full bg-slate-50   flex flex-row justify-center items-center z-[10]"
+      className="relative mt-[-10px] md:pt-[10px] lg:fixed border-b-1  border-slate-800   h-20 w-full bg-slate-50   flex flex-row justify-center items-center z-[10]"
     >
       <div
         id="small-nav"
-        className="z-6 md:hidden absolute top-[30px] right-[100%]  bg-slate-50 rounded-3xl border-1  border-black  w-[70%] md:w-1/2 h-screen text-slate-800 "
+        className="z-6 flex justify-center items-start md:hidden absolute top-[30px] right-[100%]  bg-slate-50 rounded-3xl border-1  border-black  w-[70%] md:w-1/2 h-screen text-slate-800 "
       >
-        <div
-          id="nav-links2"
-          className="h-1/2 flex flex-col justify-center items-center w-full gap-y-4"
-        >
+        <div className="nav-links h-1/2 flex flex-col justify-center items-center w-[80%] gap-y-4">
           <a
-            className="font-semibold w-[90%] h-[15%]  flex flex-col justify-center items-center rounded-2xl hover:text-[#36b1ff] transition-colors duration-200 ease-in"
-            href=""
+            className="font-semibold w-[50%] h-[15%]  flex flex-col justify-center items-center rounded-2xl hover:text-[#36b1ff] transition-colors duration-200 ease-in"
+            href="#intro"
           >
             Profile
             <span className="line w-0 bg-[#36b1ff] mt-2 h-[1px] block opacity-0"></span>
           </a>
           <a
-            className="font-semibold w-[90%] h-[15%]  flex flex-col justify-center items-center rounded-2xl hover:text-[#36b1ff] transition-colors duration-200 ease-in"
-            href=""
+            className="font-semibold w-[50%] h-[15%]  flex flex-col justify-center items-center rounded-2xl hover:text-[#36b1ff] transition-colors duration-200 ease-in"
+            href="#projects"
           >
             Projects
             <span className="line w-0 bg-[#36b1ff] mt-2 h-[1px] block opacity-0"></span>
           </a>
           <a
-            className="font-semibold w-[90%] h-[15%]  flex flex-col justify-center items-center rounded-2xl hover:text-[#36b1ff] transition-colors duration-200 ease-in"
-            href=""
+            className="font-semibold w-[50%] h-[15%]  flex flex-col justify-center items-center rounded-2xl hover:text-[#36b1ff] transition-colors duration-200 ease-in"
+            href="#experiences"
           >
-            Contact Me
+            Experiences
             <span className="line w-0 bg-[#36b1ff] mt-2 h-[1px] block opacity-0"></span>
           </a>
         </div>
@@ -177,29 +134,26 @@ export default function NavbarMain() {
             id="close"
           />
         </div>
-        <div
-          id="nav-links"
-          className="hidden md:flex w-2/5 flex-row justify-between items-center font-kanit font-[300]"
-        >
+        <div className="nav-links hidden md:flex w-2/5 flex-row justify-between items-center font-kanit font-[300] pt-2">
           <a
             className="relative h-10 w-20 flex flex-col items-center justify-center hover:text-[#36b1ff] transition-colors duration-200 ease-in"
-            href="#"
+            href="#intro"
           >
             <div className="mb-1 font-roboto ">Profile</div>
             <span className="line w-0 bg-[#36b1ff] h-[1px] block opacity-0"></span>
           </a>
           <a
             className="relative h-10 w-20 flex flex-col items-center justify-center hover:text-[#36b1ff] transition-colors duration-200 ease-in"
-            href="#"
+            href="#projects"
           >
             <div className="mb-1 font-roboto">Projects</div>
             <span className="line w-0 bg-[#36b1ff] h-[1px] block opacity-0"></span>
           </a>
           <a
             className="relative h-10 w-22 flex flex-col items-center justify-center hover:text-[#36b1ff] transition-colors duration-200 ease-in"
-            href="#"
+            href="#experiences"
           >
-            <div className="mb-1 font-roboto text-nowrap">Contact Me</div>
+            <div className="mb-1 font-roboto text-nowrap">Experiences</div>
             <span className="line w-0 bg-[#36b1ff] h-[1px] block opacity-0 text-nowrap"></span>
           </a>
         </div>

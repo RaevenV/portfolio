@@ -1,18 +1,15 @@
-
-import "./App.css";
-import { Home } from "./Home";
-import NavbarMain from "./Navbar";
 import { Routes, Route } from "react-router-dom";
-import ScrollToTop from "./ScrollToTop";
+import { Home } from "./Home";
+import Navbar from "./Navbar";
+
 function App() {
   return (
-    <div className="bg-gradient-to-t bg-slate-50 min-h-screen p-0 m-0">
-      <NavbarMain />
-      <ScrollToTop />
+    <>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
-    </div>
+    </>
   );
 }
 
