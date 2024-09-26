@@ -1,5 +1,4 @@
 import "@nextui-org/react";
-import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
@@ -7,9 +6,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function Projects() {
 
-  useEffect(()=> {
-    const tl = gsap.timeline
-  },[])
   
   return (
     <section
