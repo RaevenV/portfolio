@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import Typewriter from "./Typewriter";
 gsap.registerPlugin(ScrollTrigger);
 
+
 export default function NavbarMain() {
 
   useEffect(() => {
@@ -12,6 +13,7 @@ export default function NavbarMain() {
     const close = document.querySelector("#close");
     const smallnav = document.querySelector("#small-nav");
     const links = document.querySelectorAll("#nav-links a");
+    const links2 = document.querySelectorAll("#nav-links2 a");
     const name = document.querySelector("#name");
 
 
@@ -30,10 +32,10 @@ export default function NavbarMain() {
       gsap.fromTo(
         smallnav,
         { right: "100%", opacity: 1 },
-        { right: "15%", duration: 0.5, ease: "power2.out", onComplete: () => {
+        { right: "12%", duration: 0.5, ease: "power2.out", onComplete: () => {
           gsap.to(
             smallnav,{
-              right: "20%",
+              right: "16%",
               duration: 0.3, ease: "bounce.out"
             }
           );
@@ -78,24 +80,44 @@ export default function NavbarMain() {
       });
     });
 
-      const line = name?.querySelector(".line");
-      if (line) {
-        name?.addEventListener("mouseenter", () => {
-          gsap.fromTo(
-            line,
-            { width: "0%", opacity: 1 },
-            { width: "100%", duration: 0.15, ease: "power2.out" }
-          );
+    //small nav
+    links2.forEach((link) => {
+      const line = link.querySelector(".line");
+      link.addEventListener("mouseenter", () => {
+        gsap.fromTo(
+          line,
+          { width: "0%", opacity: 1 },
+          { width: "40%", duration: 0.15, ease: "power2.out" }
+        );
+      });
+      link.addEventListener("mouseleave", () => {
+        gsap.to(line, {
+          width: "0%",
+          duration: 0.5,
+          ease: "power2.out",
+          opacity: 0,
         });
-        name?.addEventListener("mouseleave", () => {
-          gsap.to(line, {
-            width: "0%",
-            duration: 0.5,
-            ease: "power2.out",
-            opacity: 0,
-          });
+      });
+    });
+
+    const line = name?.querySelector(".line");
+    if (line) {
+      name?.addEventListener("mouseenter", () => {
+        gsap.fromTo(
+          line,
+          { width: "0%", opacity: 1 },
+          { width: "100%", duration: 0.15, ease: "power2.out" }
+        );
+      });
+      name?.addEventListener("mouseleave", () => {
+        gsap.to(line, {
+          width: "0%",
+          duration: 0.5,
+          ease: "power2.out",
+          opacity: 0,
         });
-      }
+      });
+    }
 
 
 
@@ -104,35 +126,41 @@ export default function NavbarMain() {
   return (
     <div
       id="nav-container"
-      className="relative lg:sticky top-0 mt-[-20px] md:mt-0  h-24 w-full  md:px-[6%] lg:px-[8%] xl:px-[10%]   flex flex-row justify-center items-center "
+      className="relative top-[-12px] lg:sticky border-b-1  border-slate-800   h-20 w-full bg-slate-50   flex flex-row justify-center items-center z-[10]"
     >
       <div
         id="small-nav"
-        className="z-6 md:hidden absolute top-[30px] right-[100%]  bg-slate-50 rounded-3xl border-1  border-black  w-[70%] md:w-1/2 h-screen text-slate-800 justify-center items-center"
+        className="z-6 md:hidden absolute top-[30px] right-[100%]  bg-slate-50 rounded-3xl border-1  border-black  w-[70%] md:w-1/2 h-screen text-slate-800 "
       >
-        <div className="h-1/2 flex flex-col justify-center items-center w-full gap-y-4">
+        <div
+          id="nav-links2"
+          className="h-1/2 flex flex-col justify-center items-center w-full gap-y-4"
+        >
           <a
-            className="font-semibold w-[90%] h-[15%]  flex justify-center items-center rounded-2xl hover:text-slate-900"
+            className="font-semibold w-[90%] h-[15%]  flex flex-col justify-center items-center rounded-2xl hover:text-[#36b1ff] transition-colors duration-200 ease-in"
             href=""
           >
             Profile
+            <span className="line w-0 bg-[#36b1ff] mt-2 h-[1px] block opacity-0"></span>
           </a>
           <a
-            className="font-semibold w-[90%] h-[15%]  flex justify-center items-center rounded-2xl hover:text-slate-900"
+            className="font-semibold w-[90%] h-[15%]  flex flex-col justify-center items-center rounded-2xl hover:text-[#36b1ff] transition-colors duration-200 ease-in"
             href=""
           >
             Projects
+            <span className="line w-0 bg-[#36b1ff] mt-2 h-[1px] block opacity-0"></span>
           </a>
           <a
-            className="font-semibold w-[90%] h-[15%]  flex justify-center items-center rounded-2xl hover:text-slate-900"
+            className="font-semibold w-[90%] h-[15%]  flex flex-col justify-center items-center rounded-2xl hover:text-[#36b1ff] transition-colors duration-200 ease-in"
             href=""
           >
             Contact Me
+            <span className="line w-0 bg-[#36b1ff] mt-2 h-[1px] block opacity-0"></span>
           </a>
         </div>
       </div>
       <nav
-        className=" md:rounded-[40px] md:mt-[10px] pt-2 md:pt-4 pb-2 w-full h-4/5 border-b-1 md:border-1 border-slate-800 bg-slate-50 text-slate-800 flex flex-row  justify-end md:justify-center items-center px-[6%] z-5"
+        className="pb-2 w-full h-4/5  bg-transparent text-slate-800 flex flex-row  justify-end md:justify-center items-center px-[2%] md:px-[6%] z-5"
         id="nav-wrapper"
       >
         <div className="w-20 h-full relative align-middle mb-2">

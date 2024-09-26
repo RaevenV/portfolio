@@ -14,6 +14,7 @@ module.exports = {
         kanit: ["Kanit", "sans-serif"],
         rowdies: ["Rowdies", "sans-serif"],
         roboto: ["Roboto", "monospace"],
+        archivo: ["Archivo", "sans-serif"],
       },
     },
   },

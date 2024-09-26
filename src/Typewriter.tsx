@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 type TypewriterProps = {
   text: string;
   delay: number;
+  size: number;
 };
 
-const Typewriter = ({ text, delay }: TypewriterProps) => {
+const Typewriter = ({size, text, delay }: TypewriterProps) => {
   const [currentText, setCurrentText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -27,7 +28,9 @@ const Typewriter = ({ text, delay }: TypewriterProps) => {
     }
   }, [currentIndex, delay, text]);
 
-  return <span>{currentText}</span>;
+  currentText.fontsize(size);
+
+  return <span style={{fontSize: `${size}px`}}>{currentText}</span>;
 };
 
 export default Typewriter;
