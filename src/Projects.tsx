@@ -1,7 +1,7 @@
 import "@nextui-org/react";
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap, { Back } from "gsap";
+import gsap from "gsap";
 
 gsap.registerPlugin(ScrollTrigger);
 
