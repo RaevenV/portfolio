@@ -1,8 +1,8 @@
 import { useEffect} from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Typewriter from "./Typewriter";
 
+// import Typewriter from "./Typewriter";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function NavbarMain() {
