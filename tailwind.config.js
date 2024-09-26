@@ -13,6 +13,7 @@ module.exports = {
       fontFamily: {
         kanit: ["Kanit", "sans-serif"],
         rowdies: ["Rowdies", "sans-serif"],
+        roboto: ["Roboto", "monospace"],
       },
     },
   },
