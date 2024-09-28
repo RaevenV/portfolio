@@ -40,9 +40,9 @@ export function Projects() {
       },
     });
 
-    const introTl = gsap.timeline({ repeat: -1, yoyo: true });
+    const ProfileTl = gsap.timeline({ repeat: -1, yoyo: true });
 
-    introTl.to(downImg, {
+    ProfileTl.to(downImg, {
       y: 10,
       duration: 0.4,
       ease: "power1.inOut",
@@ -50,7 +50,7 @@ export function Projects() {
 
     return () => {
       removeDownTl.kill();
-      introTl.kill();
+      ProfileTl.kill();
     };
   }, []);
 

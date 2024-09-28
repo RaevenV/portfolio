@@ -95,7 +95,7 @@ export default function NavbarMain() {
       >
         <div className="nav-links h-1/2 flex flex-col justify-center items-center w-[80%] gap-y-4">
           <Link
-            to="Intro"
+            to="Profile"
             smooth={true}
             duration={1000}
             offset={-200}
@@ -146,7 +146,7 @@ export default function NavbarMain() {
         </div>
         <div className="nav-links hidden md:flex w-2/5 flex-row justify-between items-center font-kanit font-[300] pt-2">
           <Link
-            to="Intro"
+            to="Profile"
             smooth={true}
             duration={1000}
             offset={0}

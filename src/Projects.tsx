@@ -28,16 +28,15 @@ export function Projects() {
                 { top: 120 },
                 { top: 0, duration: 0.8, ease: "back.out(1.7)" }
               );
-              
             },
           });
         },
       },
     });
 
-    const introTl = gsap.timeline({ repeat: -1, yoyo: true });
+    const ProfileTl = gsap.timeline({ repeat: -1, yoyo: true });
 
-    introTl.to(downImg, {
+    ProfileTl.to(downImg, {
       y: 10,
       duration: 0.4,
       ease: "power1.inOut",
@@ -84,8 +83,7 @@ export function Projects() {
       timelines.forEach((tl) => tl.kill());
       ScrollTrigger.getAll().forEach((st) => st.kill());
       removeDownTl.kill();
-      introTl.kill();
-
+      ProfileTl.kill();
     };
   }, []);
 

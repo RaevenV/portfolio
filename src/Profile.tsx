@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function Intro() {
+export function Profile() {
   const roleBoxRef = useRef<HTMLDivElement>(null);
   const nameRef = useRef<HTMLDivElement>(null);
 
@@ -60,11 +60,11 @@ export function Intro() {
 
   return (
     <div
-      id="Intro"
+      id="Profile"
       className="relative px-[10%] md:px-[10%] md:mt-[20px] w-full md:h-[590px] pb-1 flex flex-col md:flex-row items-center justify-between overflow-hidden"
     >
       <div
-        id="intro-data"
+        id="Profile-data"
         className="w-full md:w-1/2 flex flex-col justify-between items-start md:mb-24"
       >
         <h1 className="relative text-[45px] md:text-[58px] font-bold font-raleway tracking-tight z-20">

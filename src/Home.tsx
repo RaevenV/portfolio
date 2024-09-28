@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Intro } from "./Intro";
+import { Profile } from "./Profile";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Projects } from "./Projects";
@@ -14,7 +14,7 @@ export function Home() {
   return (
     <main>
       <div className="relative home-container pt-8 text-slate-800 min-h-screen">
-        <Intro />
+        <Profile />
         <Projects />
       </div>
     </main>
