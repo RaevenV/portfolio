@@ -12,20 +12,7 @@ export default function NavbarMain() {
     const smallnav = document.querySelector("#small-nav");
     const links = document.querySelectorAll(".nav-links a");
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#nav-container",
-      },
-    });
-
-    tl.fromTo("#nav-container", { y: 0 }, { y: 15, duration: 0.3 }).to(
-      "#nav-container",
-      { y: 10, duration: 0.6 }
-    );
-
-    close?.classList.add("hidden");
-
-    menu?.addEventListener("click", () => {
+    const openMenu = () => {
       smallnav?.classList.remove("hidden");
       smallnav?.classList.add("flex");
       gsap.fromTo(
@@ -44,12 +31,11 @@ export default function NavbarMain() {
           },
         }
       );
-
       menu?.classList.add("hidden");
       close?.classList.remove("hidden");
-    });
+    };
 
-    close?.addEventListener("click", () => {
+    const closeMenu = () => {
       gsap.to(smallnav, {
         right: "100%",
         duration: 0.5,
@@ -59,29 +45,29 @@ export default function NavbarMain() {
           smallnav?.classList.add("hidden");
         },
       });
-
       menu?.classList.remove("hidden");
       close?.classList.add("hidden");
-    });
+    };
+
+    const handleLinkClick = () => {
+      closeMenu(); // Close the menu when a link is clicked
+    };
+
+    menu?.addEventListener("click", openMenu);
+    close?.addEventListener("click", closeMenu);
 
     links.forEach((link) => {
-      const line = link.querySelector(".line");
-      link.addEventListener("mouseenter", () => {
-        gsap.fromTo(
-          line,
-          { width: "0%", opacity: 1 },
-          { width: "100%", duration: 0.15, ease: "power2.out" }
-        );
-      });
-      link.addEventListener("mouseleave", () => {
-        gsap.to(line, {
-          width: "0%",
-          duration: 0.5,
-          ease: "power2.out",
-          opacity: 0,
-        });
-      });
+      link.addEventListener("click", handleLinkClick); // Attach click event to close menu
     });
+
+    // Cleanup event listeners on unmount
+    return () => {
+      menu?.removeEventListener("click", openMenu);
+      close?.removeEventListener("click", closeMenu);
+      links.forEach((link) => {
+        link.removeEventListener("click", handleLinkClick);
+      });
+    };
   }, []);
 
   return (
@@ -91,7 +77,7 @@ export default function NavbarMain() {
     >
       <div
         id="small-nav"
-        className="z-6 flex justify-center items-start md:hidden absolute top-[30px] right-[100%] bg-slate-50 rounded-3xl border-1 border-black w-[70%] md:w-1/2 h-screen text-slate-800"
+        className="z-6 hidden justify-center items-start md:hidden absolute top-[30px] right-[100%] bg-slate-50 rounded-3xl border-1 border-black w-[70%] md:w-1/2 h-[500px] text-slate-800"
       >
         <div className="nav-links h-1/2 flex flex-col justify-center items-center w-[80%] gap-y-4">
           <Link
@@ -108,7 +94,7 @@ export default function NavbarMain() {
             to="projects"
             smooth={true}
             duration={1000}
-            offset={-400}
+            offset={0}
             className="font-semibold w-[50%] h-[15%] flex flex-col justify-center items-center rounded-2xl hover:text-blue transition-colors duration-200 ease-in cursor-pointer"
           >
             Projects
@@ -132,13 +118,13 @@ export default function NavbarMain() {
       >
         <div className="w-20 h-full relative align-middle mb-2">
           <img
-            className="md:hidden w-9 h-9 absolute top-[25%] right-[25%] z-3 cursor-pointer"
+            className="md:hidden w-9 h-9 absolute top-[40%] right-[25%] z-3 cursor-pointer"
             src="/menu.png"
             alt="Menu"
             id="menu"
           />
           <img
-            className="hidden md:hidden w-9 h-9 absolute top-[25%] right-[25%] z-2 cursor-pointer"
+            className="hidden md:hidden w-9 h-9 absolute top-[40%] right-[25%] z-2 cursor-pointer"
             src="/close.png"
             alt="Close"
             id="close"
@@ -159,7 +145,7 @@ export default function NavbarMain() {
             to="projects"
             smooth={true}
             duration={1000}
-            offset={-200}
+            offset={0}
             className="relative h-10 w-20 flex flex-col items-center justify-center hover:text-blue transition-colors duration-200 ease-in cursor-pointer"
           >
             <div className="mb-1 font-raleway">Projects</div>

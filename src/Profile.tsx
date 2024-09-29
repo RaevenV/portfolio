@@ -61,17 +61,17 @@ export function Profile() {
   return (
     <div
       id="Profile"
-      className="relative px-[10%] md:px-[10%] md:mt-[20px] w-full md:h-[590px] pb-1 flex flex-col md:flex-row items-center justify-between overflow-hidden"
+      className="mb-10 md:mb-0 relative px-[10%] md:px-[10%] md:mt-[20px] w-full h-[400px] md:h-[590px] pb-1 flex flex-col md:flex-row items-center justify-between overflow-hidden"
     >
       <div
         id="Profile-data"
-        className="w-full md:w-1/2 flex flex-col justify-between items-start md:mb-24"
+        className="w-full h-[80%] md:h-auto md:w-1/2 flex flex-col justify-between items-start md:mb-24"
       >
         <h1 className="relative text-[45px] md:text-[58px] font-bold font-raleway tracking-tight z-20">
           <div ref={nameRef} className="relative z-20">
             RAEVEN VILLAREL
           </div>
-          <div className="absolute w-[102%] h-12 bg-blue z-[-1] top-[100%] translate-y-[-100%]"></div>
+          <div className="absolute w-[102%] h-12 bg-blue z-[-1] top-[100%] translate-y-[-80%] md:translate-y-[-100%]"></div>
         </h1>
         <p className="max-w-[550px] font-raleway tracking-tight font-medium text-[16px] text-left mt-4">
           Currently a student at Binus Alam Sutera, majoring in Computer Science
@@ -127,8 +127,6 @@ export function Profile() {
         </div>
       </div>
 
-      {/* Full-width line */}
-      <span className="absolute w-full h-0 border-t border-black bottom-0 left-0 z-10"></span>
     </div>
   );
 }
