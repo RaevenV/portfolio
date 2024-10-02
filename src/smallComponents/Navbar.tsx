@@ -12,6 +12,36 @@ export default function NavbarMain() {
     const smallnav = document.querySelector("#small-nav");
     const links = document.querySelectorAll(".nav-links a");
 
+    links.forEach((link) => {
+      const line = link.querySelector(".line");
+      link.addEventListener("mouseenter", () => {
+        gsap.fromTo(
+          line,
+          { width: "0%", opacity: 1 },
+          { width: "100%", duration: 0.15, ease: "power2.out" }
+        );
+      });
+      link.addEventListener("mouseleave", () => {
+        gsap.to(line, {
+          width: "0%",
+          duration: 0.5,
+          ease: "power2.out",
+          opacity: 0,
+        });
+      });
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#nav-container",
+      },
+    });
+
+     tl.fromTo("#nav-container", { y: 0 }, { y: 15, duration: 0.3 }).to(
+       "#nav-container",
+       { y: 10, duration: 0.6 }
+     );
+
     const openMenu = () => {
       smallnav?.classList.remove("hidden");
       smallnav?.classList.add("flex");
@@ -50,17 +80,16 @@ export default function NavbarMain() {
     };
 
     const handleLinkClick = () => {
-      closeMenu(); // Close the menu when a link is clicked
+      closeMenu();
     };
 
     menu?.addEventListener("click", openMenu);
     close?.addEventListener("click", closeMenu);
 
     links.forEach((link) => {
-      link.addEventListener("click", handleLinkClick); // Attach click event to close menu
+      link.addEventListener("click", handleLinkClick);
     });
 
-    // Cleanup event listeners on unmount
     return () => {
       menu?.removeEventListener("click", openMenu);
       close?.removeEventListener("click", closeMenu);

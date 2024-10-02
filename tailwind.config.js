@@ -14,6 +14,7 @@ module.exports = {
         rowdies: ["Rowdies", "sans-serif"],
         raleway: ["Raleway", "sans-serif"],
         archivo: ["Archivo", "sans-serif"],
+        bitter: ["Bitter", "serif"],
       },
       colors: {
         white: "#f8fafc",

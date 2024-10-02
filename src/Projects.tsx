@@ -20,11 +20,11 @@ export function Projects() {
             marginBottom: 0,
             duration: 0.4,
             onComplete: () => {
-              gsap.to("#down-img", { opacity: 0, duration: 0.2 });
+              gsap.to("#down-img", { opacity: 0, duration: 0.1 });
               gsap.fromTo(
                 "#title",
                 { top: 400 },
-                { top: 0, duration: 0.6, ease: "back.out(1.7)" }
+                { top: 20, duration: 0.6, ease: "back.out(1.7)" }
               );
             },
           });
@@ -51,8 +51,10 @@ export function Projects() {
         onUpdate: (self) => {
           const progress = self.progress * 250;
           const progress2 = self.progress * 100;
+          const progress3 = self.progress * 80;
           gsap.to("#project2", { y: -progress, ease: "none" });
           gsap.to("#project1", { width: "47%", ease: "none" });
+          gsap.to("#project1", { y: progress3, ease: "none" });
           gsap.to("#project4", { y: -progress2, ease: "none" });
           gsap.to("#project3", { width: "54%", ease: "none", delay: 1 });
           gsap.to("#project4", { width: "43%", ease: "none", delay: 1 });
@@ -65,14 +67,13 @@ export function Projects() {
         end: "bottom 90.5%",
         scrub: 1.5,
         onUpdate: (self) => {
-          const progress = self.progress * 150;
+          const progress = self.progress * 100;
           const progress2 = self.progress * 200;
           gsap.to("#project3", { y: -progress, ease: "none" });
           
           gsap.to("#project5", { y: -progress2, ease: "none" });
           gsap.to("#project6", { y: -progress, ease: "none" });
-          gsap.to("#project5", { width: "40%", ease: "none", delay: 1 });
-          gsap.to("#project6", { width: "57%", ease: "none", delay: 1 });
+          gsap.to("#project5", { width: "45%", ease: "none", delay: 1 });
         },
       });
 
@@ -136,14 +137,21 @@ export function Projects() {
       <div
         id="projects"
         ref={containerRef}
-        className="relative w-full mt-4 lg:mt-0 min-h-screen flex flex-col justify-center items-center mb-32 md:mb-20 pt-32"
+        className="relative w-full mt-4 lg:mt-0 min-h-screen flex flex-col justify-center items-center mb-32 md:mb-20  md:pt-80"
       >
         <div className="scroll-block top-0 absolute w-full h-10"></div>
         <div
           id="title"
-          className="w-[270px] h-20 absolute top-400 font-raleway font-extrabold text-[40px] lg:text-[58px] flex justify-center items-center"
+          className="w-full h-20 absolute top-400 font-raleway  flex flex-col justify-center items-center"
         >
-          PROJECTS
+          <div className="">
+            <div className="top w-full flex justify-start items-center font-medium font-bitter mb-[-18px] text-[18px] italic">
+              personal
+            </div>
+            <div className="w-full font-extrabold text-[35px] lg:text-[52px] flex justify-start items-start ">
+              PROJECTS
+            </div>
+          </div>
         </div>
 
         <div
@@ -174,7 +182,7 @@ export function Projects() {
           </div>
           <div
             id="project3"
-            className="shadow-2xl project-section md:absolute md:top-[800px] w-full md:w-[44%] left-0 bg-blue h-[350px] md:h-[450px] flex flex-col justify-between items-center rounded-2xl"
+            className="shadow-2xl project-section md:absolute md:top-[840px] w-full md:w-[44%] left-0 bg-blue h-[350px] md:h-[450px] flex flex-col justify-between items-center rounded-2xl"
             style={{
               backgroundImage: "url('./mockup-example.jpg')",
               backgroundSize: "cover",
@@ -196,7 +204,7 @@ export function Projects() {
           </div>
           <div
             id="project5"
-            className="shadow-2xl project-section md:absolute md:top-[1400px] w-full md:w-[49%] left-0 bg-purple-500 h-[350px] md:h-[500px] flex flex-col justify-between items-center rounded-2xl"
+            className="shadow-2xl project-section md:absolute md:top-[1470px] w-full md:w-[49%] left-0 bg-purple-500 h-[350px] md:h-[500px] flex flex-col justify-between items-center rounded-2xl"
             style={{
               backgroundImage: "url('./mockup-example.jpg')",
               backgroundSize: "cover",
