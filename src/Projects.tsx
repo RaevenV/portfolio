@@ -50,7 +50,7 @@ export function Projects() {
     mm.add("(min-width: 768px)", () => {
       ScrollTrigger.create({
         trigger: "#project1",
-        start: "top 50%",
+        start: "top 80%",
         end: "bottom 89%",
         scrub: 1.5,
         onUpdate: (self) => {
@@ -80,7 +80,7 @@ export function Projects() {
 
       ScrollTrigger.create({
         trigger: "#project4",
-        start: "top 40%",
+        start: "top 80%",
         end: "bottom 90.5%",
         scrub: 1.5,
         onUpdate: (self) => {
@@ -99,11 +99,11 @@ export function Projects() {
 
       ScrollTrigger.create({
         trigger: "#project5",
-        start: "top 70%",
+        start: "top 80%",
         end: "bottom 90.5%",
         scrub: 1.5,
         onUpdate: (self) => {
-          const progress = self.progress * 90;
+          const progress = self.progress * 70;
           gsap.fromTo(
             "#project5",
             { y: gsap.getProperty("#project5", "y") },
@@ -446,7 +446,7 @@ export function Projects() {
               <div className="text-2xl font-extrabold mb-2 text-white">
                 SOCIAL PEERS
               </div>
-              <div className="text-sm text-white/80 font-bold">
+              <div className="text-sm text-white/80 font-medium">
                 is an innovative app designed to help freshmen at Binus
                 University navigate their first year with ease.
               </div>
@@ -466,7 +466,7 @@ export function Projects() {
                 <b>Role : Fullstack Developer</b>
               </div>
               <div className="flex flex-col w-[88%] justify-start items-start text-sm text-white/80 mt-2 absolute pr-[5%] gap-y-2">
-                <div className="text-sm font-bold">
+                <div className="text-sm font-medium">
                   The app connects new students with experienced upperclassmen
                   who serve as freshmen partners.As challenges get completed,
                   they earn rewards, making the experience fun and rewarding.
@@ -495,7 +495,7 @@ export function Projects() {
               className="content w-full h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
             >
               <div className="text-2xl font-extrabold mb-2 text-white">DOOIT</div>
-              <div className="text-sm text-white/80 font-bold">
+              <div className="text-sm text-white/80 font-medium">
                 is a web-based finantial education app that fills the gap of
                 financial literation in Indonesia.
               </div>
@@ -515,7 +515,7 @@ export function Projects() {
                 <b>Role : Fullstack Developer</b>
               </div>
               <div className="flex flex-col w-[88%] justify-start items-start text-sm text-white/80 mt-2 absolute pr-[5%] gap-y-2">
-                <div className="text-sm font-bold">
+                <div className="text-sm font-medium">
                   The app doesn’t focus on how to generate money. Instead, we
                   focus on how to manage the money that we have, increasing
                   self-worth, and laying the fundamentals of building a
@@ -545,7 +545,7 @@ export function Projects() {
               className="content w-full h-[200px]  bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
             >
               <div className="text-2xl font-extrabold mb-2 text-white">OTOCARE</div>
-              <div className="text-sm text-white/80 font-bold">
+              <div className="text-sm text-white/80 font-medium">
                 is an innovative platform where users can look up services for
                 their car from nearest repair shops and place a reservation on a
                 certain time.
@@ -565,7 +565,7 @@ export function Projects() {
                 <b>Role : Fullstack Developer</b>
               </div>
               <div className="flex flex-col w-[88%] justify-start items-start text-sm text-white/80 mt-2 absolute pr-[5%] gap-y-2 ">
-                <div className="text-sm font-bold">
+                <div className="text-sm font-medium">
                   The app connects new students with experienced upperclassmen
                   who serve as freshmen partners. s challenges get completed,
                   they earn rewards, making the experience fun and rewarding.
@@ -596,7 +596,7 @@ export function Projects() {
               <div className="text-2xl font-extrabold mb-2 text-white">
                 IFVENT - <span className="font-extrabold">(continuation)</span>
               </div>
-              <div className="text-sm text-white/80 font-bold">
+              <div className="text-sm text-white/80 font-medium">
                 is a comprehensive event management solution that integrates
                 advanced tech to simplify event planning and coordination in
                 Indonesia.
@@ -617,7 +617,7 @@ export function Projects() {
                 <b>Role : Junior Fullstack Developer</b>
               </div>
               <div className="flex flex-col w-[88%] justify-start items-start text-sm text-white/80 mt-2 absolute pr-[5%] gap-y-2">
-                <div className="text-sm font-bold">
+                <div className="text-sm font-medium">
                   Specializing in ticket registration, seat allocation, and
                   other essential technical services to ensure smooth attendee
                   experiences while empowering event organizers with reliable
@@ -635,7 +635,7 @@ export function Projects() {
           {/* project5 */}
           <div
             id="project5"
-            className="shadow-xl hover:shadow-2xl transition-shadow  project-section md:absolute md:top-[1470px] w-full md:w-[40%] left-0 h-[350px] md:h-[500px] flex flex-col justify-end items-center rounded-2xl cursor-pointer"
+            className="shadow-xl hover:shadow-2xl transition-shadow  project-section md:absolute md:top-[1420px] w-full md:w-[40%] left-0 h-[350px] md:h-[500px] flex flex-col justify-end items-center rounded-2xl cursor-pointer"
             style={{
               backgroundImage: "url('./pantry.png')",
               backgroundSize: "cover",
@@ -649,7 +649,7 @@ export function Projects() {
               <div className="text-2xl font-extrabold mb-2 text-white">
                 PANTRY PARTY - in progress
               </div>
-              <div className="text-sm text-white/80 font-bold">
+              <div className="text-sm text-white/80 font-medium">
                 is a culinary themed web app that provides solutions for college
                 students that struggle in making daily meals
               </div>
@@ -673,7 +673,7 @@ export function Projects() {
                 <b>Role : Fullstack Developer</b>
               </div>
               <div className="flex flex-col w-[88%] justify-start items-start text-sm text-white/80 mt-2 absolute pr-[5%] gap-y-2">
-                <div className="text-sm font-bold">
+                <div className="text-sm font-medium">
                   The app helps young adults who struggle to cook by providing
                   features like preportioning meals, step-by-step cooking guide,
                   and vast curated simple menu options. Aiming to make the
