@@ -188,7 +188,7 @@ export function Projects() {
         }
       );
 
-      gsap.to(".clicktoread1", {
+      gsap.to(".clicktoread", {
         display: "block",
         duration: 0.4,
       });
@@ -237,7 +237,7 @@ export function Projects() {
       gsap.fromTo(
         project3Content,
         {
-          height: "220px",
+          height: "200px",
         },
         {
           height: "350px",
@@ -256,7 +256,7 @@ export function Projects() {
           height: "350px",
         },
         {
-          height: "220px",
+          height: "200px",
           duration: 1,
           ease: "power2.out",
         }
@@ -275,7 +275,7 @@ export function Projects() {
       gsap.fromTo(
         project4Content,
         {
-          height: "220px",
+          height: "200px",
         },
         {
           height: "330px",
@@ -294,7 +294,7 @@ export function Projects() {
           height: "330px",
         },
         {
-          height: "220px",
+          height: "200px",
           duration: 1,
           ease: "power2.out",
         }
@@ -313,7 +313,7 @@ export function Projects() {
       gsap.fromTo(
         project5Content,
         {
-          height: "230px",
+          height: "200px",
         },
         {
           height: "380px",
@@ -332,7 +332,7 @@ export function Projects() {
           height: "380px",
         },
         {
-          height: "230px",
+          height: "200px",
           duration: 1,
           ease: "power2.out",
         }
@@ -351,7 +351,7 @@ export function Projects() {
       gsap.fromTo(
         project6Content,
         {
-          height: "220px",
+          height: "200px",
         },
         {
           height: "380px",
@@ -369,10 +369,10 @@ export function Projects() {
         project6Content,
         {
           height: "380px",
+          overflowY : "hidden",
         },
         {
-          height: "220px",
-          overflowY : "scroll",
+          height: "200px",
           duration: 1,
           ease: "power2.out",
         }
@@ -494,7 +494,9 @@ export function Projects() {
               id="project2-content"
               className="content w-full h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
             >
-              <div className="text-2xl font-extrabold mb-2 text-white">DOOIT</div>
+              <div className="text-2xl font-extrabold mb-2 text-white">
+                DOOIT
+              </div>
               <div className="text-sm text-white/80 font-medium">
                 is a web-based finantial education app that fills the gap of
                 financial literation in Indonesia.
@@ -542,9 +544,11 @@ export function Projects() {
           >
             <div
               id="project3-content"
-              className="content w-full h-[220px]  bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
+              className="content w-full h-[200px]  bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
             >
-              <div className="text-2xl font-extrabold mb-2 text-white">OTOCARE</div>
+              <div className="text-2xl font-extrabold mb-2 text-white">
+                OTOCARE
+              </div>
               <div className="text-sm text-white/80 font-medium">
                 is an innovative platform where users can look up services for
                 their car from nearest repair shops and place a reservation on a
@@ -572,8 +576,8 @@ export function Projects() {
                 </div>
 
                 <div className="text-sm">
-                  <b>Collaborators: </b>Aryo Bimo, Alfakhri Rizqulloh, Michelle
-                  Angela, Alexander Theodore
+                  <b>Collaborators: </b>Samuel Dwiputra, Daniel Christian Purba,
+                  Ivan Yonathan Siwu, James Santoso
                 </div>
               </div>
             </div>
@@ -584,14 +588,14 @@ export function Projects() {
             id="project4"
             className="shadow-xl hover:shadow-2xl transition-shadow  project-section md:absolute md:top-[780px] right-0 w-full md:w-[53%] bg-green-500 h-[350px] md:h-[600px] flex flex-col justify-end items-center rounded-2xl cursor-pointer"
             style={{
-              backgroundImage: "url('./mockup-example.jpg')",
+              backgroundImage: "url('./ifvent.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
             <div
               id="project4-content"
-              className="content w-full h-[220px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
+              className="content w-full h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
             >
               <div className="text-2xl font-extrabold mb-2 text-white">
                 IFVENT - <span className="font-extrabold">(continuation)</span>
@@ -601,13 +605,15 @@ export function Projects() {
                 advanced tech to simplify event planning and coordination in
                 Indonesia.
               </div>
-              <div className="w-[100px]  h-10 mt-2 flex flex-row justify-start items-center gap-x-2">
+              <div className="w-[100px]  h-10 mt-2 flex flex-row justify-start items-center gap-x-3">
                 <img className="w-8 h-6 rounded-md" src="./php.png" alt="" />
                 <img
                   className="w-8 h-8 rounded-md"
                   src="./laravel.png"
                   alt=""
                 />
+                <img className="w-8 h-8 rounded-md" src="./aws.png" alt="" />
+                <img className="w-8 h-8 rounded-md" src="./eb.png" alt="" />
               </div>
               <div className="clicktoread4 text-sm text-slate-100 mt-2 ">
                 click to read more
@@ -644,7 +650,7 @@ export function Projects() {
           >
             <div
               id="project5-content"
-              className="content w-full h-[220px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
+              className="content w-full h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
             >
               <div className="text-2xl font-extrabold mb-2 text-white">
                 PANTRY PARTY - in progress
@@ -700,7 +706,7 @@ export function Projects() {
           >
             <div
               id="project6-content"
-              className="content w-full h-[220px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
+              className="content w-full h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
             >
               <div className="text-2xl font-extrabold mb-2 text-white">
                 WASTENOT - in progress
