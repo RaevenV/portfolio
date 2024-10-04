@@ -237,7 +237,7 @@ export function Projects() {
       gsap.fromTo(
         project3Content,
         {
-          height: "200px",
+          height: "220px",
         },
         {
           height: "350px",
@@ -256,7 +256,7 @@ export function Projects() {
           height: "350px",
         },
         {
-          height: "200px",
+          height: "220px",
           duration: 1,
           ease: "power2.out",
         }
@@ -275,7 +275,7 @@ export function Projects() {
       gsap.fromTo(
         project4Content,
         {
-          height: "200px",
+          height: "220px",
         },
         {
           height: "330px",
@@ -294,7 +294,7 @@ export function Projects() {
           height: "330px",
         },
         {
-          height: "200px",
+          height: "220px",
           duration: 1,
           ease: "power2.out",
         }
@@ -313,7 +313,7 @@ export function Projects() {
       gsap.fromTo(
         project5Content,
         {
-          height: "200px",
+          height: "230px",
         },
         {
           height: "380px",
@@ -332,7 +332,7 @@ export function Projects() {
           height: "380px",
         },
         {
-          height: "200px",
+          height: "230px",
           duration: 1,
           ease: "power2.out",
         }
@@ -351,7 +351,7 @@ export function Projects() {
       gsap.fromTo(
         project6Content,
         {
-          height: "200px",
+          height: "220px",
         },
         {
           height: "380px",
@@ -371,7 +371,7 @@ export function Projects() {
           height: "380px",
         },
         {
-          height: "200px",
+          height: "220px",
           overflowY : "scroll",
           duration: 1,
           ease: "power2.out",
