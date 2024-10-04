@@ -542,7 +542,7 @@ export function Projects() {
           >
             <div
               id="project3-content"
-              className="content w-full h-[200px]  bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
+              className="content w-full h-[220px]  bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
             >
               <div className="text-2xl font-extrabold mb-2 text-white">OTOCARE</div>
               <div className="text-sm text-white/80 font-medium">
@@ -591,7 +591,7 @@ export function Projects() {
           >
             <div
               id="project4-content"
-              className="content w-full h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
+              className="content w-full h-[220px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
             >
               <div className="text-2xl font-extrabold mb-2 text-white">
                 IFVENT - <span className="font-extrabold">(continuation)</span>
@@ -644,7 +644,7 @@ export function Projects() {
           >
             <div
               id="project5-content"
-              className="content w-full h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
+              className="content w-full h-[220px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
             >
               <div className="text-2xl font-extrabold mb-2 text-white">
                 PANTRY PARTY - in progress
@@ -700,7 +700,7 @@ export function Projects() {
           >
             <div
               id="project6-content"
-              className="content w-full h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
+              className="content w-full h-[220px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
             >
               <div className="text-2xl font-extrabold mb-2 text-white">
                 WASTENOT - in progress
