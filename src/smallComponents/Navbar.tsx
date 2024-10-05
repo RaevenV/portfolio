@@ -132,16 +132,7 @@ export default function NavbarMain() {
             Projects
             <span className="line w-0 bg-blue mt-2 h-[1px] block opacity-0"></span>
           </Link>
-          <Link
-            to="experiences"
-            smooth={true}
-            duration={1000}
-            offset={-100}
-            className="font-bold w-[50%] h-[15%] flex flex-col justify-center items-center rounded-2xl hover:text-blue transition-colors duration-200 ease-in cursor-pointer"
-          >
-            Experiences
-            <span className="line w-0 bg-blue mt-2 h-[1px] block opacity-0"></span>
-          </Link>
+          
         </div>
       </div>
       <nav
@@ -162,12 +153,12 @@ export default function NavbarMain() {
             id="close"
           />
         </div>
-        <div className="nav-links hidden md:flex w-2/5 flex-row justify-between items-center font-kanit font-[300] pt-2">
+        <div className="nav-links hidden md:flex w-full flex-row justify-end items-center font-kanit font-[300] pt-2 gap-x-8">
           <Link
             to="Profile"
             smooth={true}
             duration={1000}
-            offset={0}
+            offset={-100}
             className="relative h-10 w-20 flex flex-col items-center justify-center hover:text-blue transition-colors duration-200 ease-in cursor-pointer"
           >
             <div className="mb-1 font-raleway">Profile</div>
@@ -177,22 +168,13 @@ export default function NavbarMain() {
             to="projects"
             smooth={true}
             duration={1000}
-            offset={0}
+            offset={-200}
             className="relative h-10 w-20 flex flex-col items-center justify-center hover:text-blue transition-colors duration-200 ease-in cursor-pointer"
           >
             <div className="mb-1 font-raleway">Projects</div>
             <span className="line w-0 bg-blue h-[1px] block opacity-0"></span>
           </Link>
-          <Link
-            to="experiences"
-            smooth={true}
-            duration={1000}
-            offset={-100}
-            className="relative h-10 w-22 flex flex-col items-center justify-center hover:text-blue transition-colors duration-200 ease-in cursor-pointer"
-          >
-            <div className="mb-1 font-raleway text-nowrap">Experiences</div>
-            <span className="line w-0 bg-blue h-[1px] block opacity-0 text-nowrap"></span>
-          </Link>
+          
         </div>
       </nav>
     </div>

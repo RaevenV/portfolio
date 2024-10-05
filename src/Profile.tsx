@@ -23,7 +23,7 @@ export function Profile() {
         gsap.to(socialBtn, {
           translateY: 0,
           duration: 0.5,
-          ease: "power2.in", 
+          ease: "power2.in",
         });
       });
     });
@@ -72,7 +72,6 @@ export function Profile() {
       });
     }
 
-
     if (jobContainerRef.current) {
       const jobContainer = jobContainerRef.current;
       const blackSkew = jobContainer.querySelector("#black-skew");
@@ -82,19 +81,18 @@ export function Profile() {
         gsap.set(textElement, { color: "black", zIndex: 30 });
         gsap.to(blackSkew, {
           width: "120%",
-          duration: 1.2,
+          duration: 1.4,
           ease: "power2.out",
           onStart: () => {
             gsap.to(textElement, {
-              color: "white",
-              duration: 0.2,
+              color: "slate-800",
+              duration: 0.8,
               ease: "power2.out",
             });
           },
         });
       }
     }
-
 
     return () => {
       socialButtons.forEach((socialBtn) => {
@@ -107,50 +105,41 @@ export function Profile() {
   return (
     <div
       id="Profile"
-      className="mb-10 md:mb-0 relative px-[10%] md:px-[10%] mt-[20px] md:mt-[20px] w-full h-[300px] md:h-[590px] pb-1 flex flex-col md:flex-row items-center justify-between overflow-hidden"
+      className="mb-20 md:mb-0 relative w-full h-auto md:h-[590px] pb-1 flex flex-col md:flex-row items-center justify-between overflow-hidden pt-10 md:pt-20 px-[6%]"
     >
-      <div
-        id="Profile-data"
-        className="w-full h-[70%] md:h-auto md:w-1/2 flex flex-col justify-between items-start md:mb-24"
-      >
-        <h1 className="relative text-[35px] md:text-[52px] font-bold font-raleway tracking-tight z-20 italic ">
-          <div ref={nameRef} className="relative z-20 ">
-            RAEVEN VILLAREL
-          </div>
-          <div className="absolute w-[102%] h-12 bg-blue z-[-1] top-[100%] translate-y-[-80%] md:translate-y-[-100%] opacity-[0.8]"></div>
-        </h1>
-        <p className="max-w-[550px] font-raleway tracking-tight font-medium text-[16px] text-left mt-4">
-          Currently a student at Binus Alam Sutera, majoring in Computer Science
-          and specializing in Software Engineering. Passionate about frontend
-          development, self-improvement, and leadership.
-        </p>
-
+      <div className="w-full md:w-[60%] h-full bg-slate-800 p-8  rounded-2xl md:p-16 shadow-md">
         <div
-          id="job-container"
-          ref={jobContainerRef}
-          className="relative font-raleway w-auto px-4 h-10 border border-black flex justify-center items-center md:mt-8 rounded-md overflow-hidden"
+          id="Profile-data"
+          className="w-full h-full flex flex-col justify-start items-start"
         >
+          <h1 className="relative text-[35px] md:text-[52px] font-bold font-raleway tracking-tight z-20 italic text-white mb-8">
+            <div ref={nameRef} className="relative z-20 ">
+              RAEVEN VILLAREL
+            </div>
+            <div className="absolute w-[102%] h-12 bg-slate-400 z-[-1] top-[100%] translate-y-[-80%] md:translate-y-[-100%] opacity-[0.8]"></div>
+          </h1>
+          <p className="max-w-[550px] font-raleway tracking-tight font-medium text-[16px] text-left mt-4 text-white mb-8">
+            Currently a student at Binus Alam Sutera, majoring in Computer
+            Science and specializing in Software Engineering. Passionate about
+            frontend development, self-improvement, and leadership.
+          </p>
+
           <div
-            id="black-skew"
-            className="absolute w-0 h-full bg-slate-800 left-[-10px] skew-x-12 z-10"
-          ></div>
-          <span id="job-text" className="relative z-20">
-            frontend developer
-          </span>
-        </div>
-      </div>
-      <img
-        src="./me.png"
-        className="hidden md:block absolute md:top-[15%] right-[10%]"
-        alt=""
-      />
-      <div
-        id="role-box"
-        className=" relative md:absolute md:left-[10%]  w-full md:w-1/2 flex justify-start items-end h-[80px] md:h-full z-[1] md:pb-36 md:mt-0 "
-      >
-        <div className=" w-full flex justify-start items-center">
-          <div className="relative">
-            <div className="flex justify-center items-center gap-x-8">
+            id="job-container"
+            ref={jobContainerRef}
+            className="relative font-raleway w-auto px-4 h-10 border border-white flex justify-center items-center mt-8 rounded-md overflow-hidden mb-8"
+          >
+            <div
+              id="black-skew"
+              className="absolute w-0 h-full bg-slate-50 left-[-10px] skew-x-12 z-10"
+            ></div>
+            <span id="job-text" className="relative z-20 text-white">
+              frontend developer
+            </span>
+          </div>
+
+          <div className="">
+            <div className="flex justify-start items-center gap-x-8">
               {[
                 {
                   href: "https://github.com/RaevenV",
@@ -171,7 +160,7 @@ export function Profile() {
                 <a
                   key={social.alt}
                   href={social.href}
-                  className="social-button cursor-pointer w-12 h-12 flex justify-center items-center z-20"
+                  className="social-button cursor-pointer w-8 h-8 flex justify-center items-center z-20 bg-white rounded-md"
                 >
                   <img
                     src={social.src}
@@ -180,6 +169,72 @@ export function Profile() {
                   />
                 </a>
               ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full md:w-[38%] h-[500px] bg-slate-800 flex flex-col items-center justify-start pt-16  rounded-2xl shadow-md text-white gap-y-8">
+        <div className="w-full flex-grow overflow-y-auto overflow-x-hidden">
+          <div className="w-full flex flex-col justify-start items-start text-white gap-y-4">
+            <div className="item1 w-full h-20 flex flex-row justify-start items-start gap-x-4">
+              <span className="w-16 h-[1px] bg-white mt-4"></span>
+              <div className="w-[70%]  h-full flex flex-col justify-start items-start gap-y-1">
+                <div className="text-[20px] font-bold">Fullstack Developer</div>
+                <div className="text-[16px] font-medium">
+                  Pt. Solusi Ifvent Indonesia
+                </div>
+              </div>
+            </div>
+
+            <div className="w-full h-20 flex flex-row justify-start items-start gap-x-4">
+              <span className="w-16 h-[1px] bg-white mt-4"></span>
+              <div className="w-[70%]  h-full flex flex-col justify-start items-start gap-y-1">
+                <div className="text-[20px] font-bold">Fullstack Developer</div>
+                <div className="text-[16px] font-medium">
+                  Pt. Solusi Ifvent Indonesia
+                </div>
+              </div>
+            </div>
+
+            <div className="w-full h-20 flex flex-row justify-start items-start gap-x-4">
+              <span className="w-16 h-[1px] bg-white mt-4"></span>
+              <div className="w-[70%]  h-full flex flex-col justify-start items-start gap-y-1">
+                <div className="text-[20px] font-bold">Fullstack Developer</div>
+                <div className="text-[16px] font-medium">
+                  Pt. Solusi Ifvent Indonesia
+                </div>
+              </div>
+            </div>
+
+            <div className="w-full h-20 flex flex-row justify-start items-start gap-x-4">
+              <span className="w-16 h-[1px] bg-white mt-4"></span>
+              <div className="w-[70%]  h-full flex flex-col justify-start items-start gap-y-1">
+                <div className="text-[20px] font-bold">Fullstack Developer</div>
+                <div className="text-[16px] font-medium">
+                  Pt. Solusi Ifvent Indonesia
+                </div>
+              </div>
+            </div>
+
+            <div className="w-full h-20 flex flex-row justify-start items-start gap-x-4">
+              <span className="w-16 h-[1px] bg-white mt-4"></span>
+              <div className="w-[70%]  h-full flex flex-col justify-start items-start gap-y-1">
+                <div className="text-[20px] font-bold">Fullstack Developer</div>
+                <div className="text-[16px] font-medium">
+                  Pt. Solusi Ifvent Indonesia
+                </div>
+              </div>
+            </div>
+
+            <div className=" w-full h-20 flex flex-row justify-start items-start gap-x-4">
+              <span className="w-16 h-[1px] bg-white mt-4"></span>
+              <div className="w-[70%]  h-full flex flex-col justify-start items-start gap-y-1">
+                <div className="text-[20px] font-bold">Fullstack Developer</div>
+                <div className="text-[16px] font-medium">
+                  Pt. Solusi Ifvent Indonesia
+                </div>
+              </div>
             </div>
           </div>
         </div>

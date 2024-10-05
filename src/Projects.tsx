@@ -13,6 +13,7 @@ export function Projects() {
   const [isProject4Expanded, setIsProject4Expanded] = useState(false);
   const [isProject5Expanded, setIsProject5Expanded] = useState(false);
   const [isProject6Expanded, setIsProject6Expanded] = useState(false);
+
   useEffect(() => {
     const downImg = downImgRef.current;
 
@@ -29,7 +30,7 @@ export function Projects() {
               gsap.fromTo(
                 "#title",
                 { top: 400 },
-                { top: 40, duration: 0.6, ease: "back.out(1.7)" }
+                { top: 0, duration: 0.6, ease: "back.out(1.7)" }
               );
             },
           });
@@ -45,98 +46,25 @@ export function Projects() {
       ease: "power1.inOut",
     });
 
-    let mm = gsap.matchMedia();
-
-    mm.add("(min-width: 768px)", () => {
-      ScrollTrigger.create({
-        trigger: "#project1",
-        start: "top 80%",
-        end: "bottom 89%",
-        scrub: 1.5,
-        onUpdate: (self) => {
-          const progress = self.progress * 160;
-          const progress3 = self.progress * 80;
-          gsap.fromTo(
-            "#project2",
-            { y: gsap.getProperty("#project2", "y") },
-            {
-              y: progress,
-              duration: 0.5,
-              ease: "power2.out",
-            }
-          );
-
-          gsap.fromTo(
-            "#project1",
-            { y: gsap.getProperty("#project1", "y") },
-            {
-              y: progress3,
-              duration: 0.5,
-              ease: "power2.out",
-            }
-          );
-        },
-      });
-
-      ScrollTrigger.create({
-        trigger: "#project4",
-        start: "top 80%",
-        end: "bottom 90.5%",
-        scrub: 1.5,
-        onUpdate: (self) => {
-          const progress = self.progress * 100;
-          gsap.fromTo(
-            "#project3",
-            { y: gsap.getProperty("#project3", "y") },
-            {
-              y: -progress,
-              duration: 0.5,
-              ease: "power2.out",
-            }
-          );
-        },
-      });
-
-      ScrollTrigger.create({
-        trigger: "#project5",
-        start: "top 80%",
-        end: "bottom 90.5%",
-        scrub: 1.5,
-        onUpdate: (self) => {
-          const progress = self.progress * 70;
-          gsap.fromTo(
-            "#project5",
-            { y: gsap.getProperty("#project5", "y") },
-            {
-              y: -progress,
-              duration: 0.3,
-              ease: "power2.out",
-            }
-          );
-        },
-      });
-    });
-
     gsap.utils
-    .toArray<HTMLDivElement>(".project-section")
-    .forEach((project) => {
-      gsap.set(project, { scale: 1 });
-      project.addEventListener("mouseenter", () => {
-        gsap.to(project, {
-          scale: 1.015,
-          duration: 0.3,
-          ease: "power2.out",
+      .toArray<HTMLDivElement>(".project-section")
+      .forEach((project) => {
+        gsap.set(project, { scale: 1 });
+        project.addEventListener("mouseenter", () => {
+          gsap.to(project, {
+            scale: 1.015,
+            duration: 0.1,
+            ease: "power2.out",
+          });
+        });
+        project.addEventListener("mouseleave", () => {
+          gsap.to(project, {
+            scale: 1,
+            duration: 0.2,
+            ease: "power2.out",
+          });
         });
       });
-      project.addEventListener("mouseleave", () => {
-        gsap.to(project, {
-          scale: 1,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      });
-    });
-    
 
     return () => {
       removeDownTl.kill();
@@ -145,253 +73,43 @@ export function Projects() {
     };
   }, []);
 
-  const project2 = document.querySelector("#project2");
-  const project2Content = document.querySelector("#project2-content");
-  const project1 = document.querySelector("#project1");
-  const project1Content = document.querySelector("#project1-content");
-  const project3 = document.querySelector("#project3");
-  const project3Content = document.querySelector("#project3-content");
-  const project4 = document.querySelector("#project4");
-  const project4Content = document.querySelector("#project4-content");
-  const project5 = document.querySelector("#project5");
-  const project5Content = document.querySelector("#project5-content");
-  const project6 = document.querySelector("#project6");
-  const project6Content = document.querySelector("#project6-content");
+  const handleProjectExpand = (
+    projectId: string,
+    isExpanded: boolean,
+    setExpanded: (value: boolean) => void
+  ) => {
+    const projectContent = document.querySelector(`#${projectId}-content`);
 
-  project1?.addEventListener("click", () => {
-    if (!isProject1Expanded) {
-      gsap.fromTo(
-        project1Content,
-        {
-          height: "200px",
-        },
-        {
-          height: "380px",
-          duration: 1,
-          ease: "power2.out",
-        }
-      );
-      gsap.to(".clicktoread", {
-        display: "none",
-        duration: 0.4,
-      });
-    } else {
-      gsap.fromTo(
-        project1Content,
-        {
-          height: "380px",
-        },
-        {
-          height: "200px",
-          duration: 1,
-          ease: "power2.out",
-        }
-      );
-
-      gsap.to(".clicktoread", {
-        display: "block",
-        duration: 0.4,
-      });
-    }
-
-    setIsProject1Expanded(!isProject1Expanded);
-  });
-
-  project2?.addEventListener("click", () => {
-    if (!isProject2Expanded) {
-      gsap.fromTo(project2Content,{
-        height: "200px",
-      },{
-        height: "380px",
+    if (!isExpanded) {
+      gsap.to(projectContent, {
+        height: "340px",
         duration: 1,
         ease: "power2.out",
       });
-      gsap.to(".clicktoread2", {
+      gsap.to(`#${projectId} .clicktoread`, {
         display: "none",
         duration: 0.4,
       });
     } else {
-      gsap.fromTo(
-        project2Content,
-        {
-          height: "380px",
-        },
-        {
-          height: "200px",
-          duration: 1,
-          ease: "power2.out",
-        }
-      );
-
-      gsap.to(".clicktoread2", {
+      gsap.to(projectContent, {
+        height: "200px",
+        duration: 1,
+        ease: "power2.out",
+      });
+      gsap.to(`#${projectId} .clicktoread`, {
         display: "block",
         duration: 0.4,
       });
     }
 
-    setIsProject2Expanded(!isProject2Expanded);
-  });
-
-  project3?.addEventListener("click", () => {
-    if (!isProject3Expanded) {
-      gsap.fromTo(
-        project3Content,
-        {
-          height: "200px",
-        },
-        {
-          height: "350px",
-          duration: 1,
-          ease: "power2.out",
-        }
-      );
-      gsap.to(".clicktoread3", {
-        display: "none",
-        duration: 0.4,
-      });
-    } else {
-      gsap.fromTo(
-        project3Content,
-        {
-          height: "350px",
-        },
-        {
-          height: "200px",
-          duration: 1,
-          ease: "power2.out",
-        }
-      );
-      gsap.to(".clicktoread3", {
-        display: "block",
-        duration: 0.4,
-      });
-    }
-
-    setIsProject3Expanded(!isProject3Expanded);
-  });
-
-  project4?.addEventListener("click", () => {
-    if (!isProject4Expanded) {
-      gsap.fromTo(
-        project4Content,
-        {
-          height: "200px",
-        },
-        {
-          height: "330px",
-          duration: 1,
-          ease: "power2.out",
-        }
-      );
-      gsap.to(".clicktoread4", {
-        display: "none",
-        duration: 0.4,
-      });
-    } else {
-      gsap.fromTo(
-        project4Content,
-        {
-          height: "330px",
-        },
-        {
-          height: "200px",
-          duration: 1,
-          ease: "power2.out",
-        }
-      );
-      gsap.to(".clicktoread4", {
-        display: "block",
-        duration: 0.4,
-      });
-    }
-
-    setIsProject4Expanded(!isProject4Expanded);
-  });
-  
-  project5?.addEventListener("click", () => {
-    if (!isProject5Expanded) {
-      gsap.fromTo(
-        project5Content,
-        {
-          height: "200px",
-        },
-        {
-          height: "380px",
-          duration: 1,
-          ease: "power2.out",
-        }
-      );
-      gsap.to(".clicktoread5", {
-        display: "none",
-        duration: 0.4,
-      });
-    } else {
-      gsap.fromTo(
-        project5Content,
-        {
-          height: "380px",
-        },
-        {
-          height: "200px",
-          duration: 1,
-          ease: "power2.out",
-        }
-      );
-      gsap.to(".clicktoread5", {
-        display: "block",
-        duration: 0.4,
-      });
-    }
-
-    setIsProject5Expanded(!isProject5Expanded);
-  });
-
-  project6?.addEventListener("click", () => {
-    if (!isProject6Expanded) {
-      gsap.fromTo(
-        project6Content,
-        {
-          height: "200px",
-        },
-        {
-          height: "380px",
-          duration: 1,
-          ease: "power2.out",
-        }
-      );
-      gsap.to(".clicktoread6", {
-        display: "none",
-        duration: 0.4,
-      });
-      
-    } else {
-      gsap.fromTo(
-        project6Content,
-        {
-          height: "380px",
-          overflowY : "hidden",
-        },
-        {
-          height: "200px",
-          duration: 1,
-          ease: "power2.out",
-        }
-      );
-      gsap.to(".clicktoread6", {
-        display: "block",
-        duration: 0.4,
-      });
-      
-    }
-
-    setIsProject6Expanded(!isProject6Expanded);
-  });
+    setExpanded(!isExpanded);
+  };
 
   return (
     <>
       <div
         id="down-container"
-        className="block mt-8 md:mt-[-20px] mb-6 h-[60px] lg:h-[50px] w-full relative"
+        className="block mt-8 mb-6 h-[60px] lg:h-[50px] w-full relative"
       >
         <img
           ref={downImgRef}
@@ -404,352 +122,188 @@ export function Projects() {
       <div
         id="projects"
         ref={containerRef}
-        className="relative w-full mt-4 lg:mt-0 min-h-screen flex flex-col justify-center items-center mb-32 md:mb-20 pt-[220px] md:pt-[240px]"
+        className="relative w-full mt-4 lg:mt-0 min-h-screen flex flex-col items-center mb-32 md:mb-20 pt-[220px] md:pt-[240px]"
       >
         <div className="scroll-block top-0 absolute w-full h-10"></div>
         <div
           id="title"
-          className="w-full h-20 absolute  font-raleway  flex flex-col justify-center items-center"
+          className="w-full h-20 absolute font-raleway flex flex-col items-center"
         >
           <div className="flex flex-col">
             <div className="top w-full flex justify-start items-center font-medium font-bitter mb-[-18px] text-[18px] italic">
               personal
             </div>
-            <div className="w-full font-extrabold text-[35px] lg:text-[52px] flex justify-start items-start ">
+            <div className="w-full font-extrabold text-[35px] lg:text-[52px] flex justify-start items-start">
               PROJECTS
             </div>
           </div>
           <div className="mt-4 desc w-[380px] h-auto font-raleway text-center">
             These projects reflect my journey in blending creativity with
             technology, each solving real-world problems through thoughtful
-            design and code.{" "}
+            design and code.
           </div>
         </div>
 
         <div
           id="project-window"
-          className="relative md:w-[80%] w-[85%] min-h-[1800px] md:min-h-[2000px] rounded-md flex flex-col justify-start items-center mb-10 gap-y-4 cursor-pointer "
+          className="w-full md:w-[80%] min-h-[1800px] md:min-h-[1400px] rounded-md flex flex-col md:flex-row flex-wrap justify-between items-center md:items-start gap-y-4 md:gap-y-8 cursor-pointer scroll-smooth"
         >
-          <div
+          <ProjectCard
             id="project1"
-            className="shadow-xl project-section md:absolute left-0 top-0 w-full md:w-[50%] h-[350px] md:h-[650px] flex flex-col justify-end items-center rounded-2xl overflow-hidden "
-            style={{
-              backgroundImage: "url('./socialPeers.png')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div
-              id="project1-content"
-              className="content w-full h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
-            >
-              <div className="text-2xl font-extrabold mb-2 text-white">
-                SOCIAL PEERS
-              </div>
-              <div className="text-sm text-white/80 font-medium">
-                is an innovative app designed to help freshmen at Binus
-                University navigate their first year with ease.
-              </div>
-              <div className="w-[100px]  h-10 mt-2 flex flex-row justify-start items-center gap-x-2">
-                <img className="w-8 h-8 rounded-md" src="./swift.png" alt="" />
-                <img
-                  className="w-8 h-8 rounded-md"
-                  src="./swiftui.png"
-                  alt=""
-                />
-              </div>
+            title="SOCIAL PEERS"
+            description="is an innovative app designed to help freshmen at Binus University navigate their first year with ease."
+            backgroundImage="./socialPeers.png"
+            technologies={["swift.png", "swiftui.png"]}
+            role="Fullstack Developer"
+            details="The app connects new students with experienced upperclassmen who serve as freshmen partners. As challenges get completed, they earn rewards, making the experience fun and rewarding."
+            collaborators="Aryo Bimo, Alfakhri Rizqulloh, Michelle Angela, Alexander Theodore"
+            isExpanded={isProject1Expanded}
+            setExpanded={setIsProject1Expanded}
+            handleExpand={handleProjectExpand}
+          />
 
-              <div className="clicktoread text-sm text-slate-100 mt-2 ">
-                click to read more
-              </div>
-              <div className="text-sm text-slate-100 mt-2 pt-[20px] md:pt-[10px]">
-                <b>Role : Fullstack Developer</b>
-              </div>
-              <div className="flex flex-col w-[88%] justify-start items-start text-sm text-white/80 mt-2 absolute pr-[5%] gap-y-2">
-                <div className="text-sm font-medium">
-                  The app connects new students with experienced upperclassmen
-                  who serve as freshmen partners.As challenges get completed,
-                  they earn rewards, making the experience fun and rewarding.
-                </div>
-
-                <div className="text-sm">
-                  <b>Collaborators: </b>Aryo Bimo, Alfakhri Rizqulloh, Michelle
-                  Angela, Alexander Theodore
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* project2 */}
-          <div
+          <ProjectCard
             id="project2"
-            className="shadow-xl hover:shadow-2xl transition-shadow  project-section md:absolute right-0 md:top-10 w-full md:w-[47%] bg-yellow-500 h-[350px] md:h-[470px] flex flex-col justify-end items-center rounded-2xl cursor-pointer"
-            style={{
-              backgroundImage: "url('./dooit.png')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div
-              id="project2-content"
-              className="content w-full h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
-            >
-              <div className="text-2xl font-extrabold mb-2 text-white">
-                DOOIT
-              </div>
-              <div className="text-sm text-white/80 font-medium">
-                is a web-based finantial education app that fills the gap of
-                financial literation in Indonesia.
-              </div>
-              <div className="w-[100px]  h-10 mt-2 flex flex-row justify-start items-center gap-x-2">
-                <img className="w-8 h-8 rounded-md" src="./react.png" alt="" />
-                <img
-                  className="w-8 h-8 rounded-md"
-                  src="./firebase.png"
-                  alt=""
-                />
-              </div>
+            title="DOOIT"
+            description="is a web-based financial education app that fills the gap of financial literacy in Indonesia."
+            backgroundImage="./dooit.png"
+            technologies={["react.png", "firebase.png"]}
+            role="Fullstack Developer"
+            details="The app doesn't focus on how to generate money. Instead, we focus on how to manage the money that we have, increasing self-worth, and laying the fundamentals of building a business."
+            collaborators="Ryan Errando, Samantha Michelle Ferdi Karjadiputra, and Darwin Anathapindika"
+            isExpanded={isProject2Expanded}
+            setExpanded={setIsProject2Expanded}
+            handleExpand={handleProjectExpand}
+          />
 
-              <div className="clicktoread2 text-sm text-slate-100 mt-2 ">
-                click to read more
-              </div>
-              <div className="text-sm text-slate-100 mt-2 pt-[20px] md:pt-[10px]">
-                <b>Role : Fullstack Developer</b>
-              </div>
-              <div className="flex flex-col w-[88%] justify-start items-start text-sm text-white/80 mt-2 absolute pr-[5%] gap-y-2">
-                <div className="text-sm font-medium">
-                  The app doesn’t focus on how to generate money. Instead, we
-                  focus on how to manage the money that we have, increasing
-                  self-worth, and laying the fundamentals of building a
-                  business.
-                </div>
-
-                <div className="text-sm">
-                  <b>Collaborators: </b> : Ryan Errando, Samantha Michelle Ferdi
-                  Karjadiputra, and Darwin Anathapindika
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* project3 */}
-          <div
+          <ProjectCard
             id="project3"
-            className="shadow-xl hover:shadow-2xl transition-shadow  project-section md:absolute md:top-[840px] w-full md:w-[44%] left-0 bg-blue h-[350px] md:h-[550px] flex flex-col justify-end items-center rounded-2xl cursor-pointer overflowhi"
-            style={{
-              backgroundImage: "url('./otocare.png')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div
-              id="project3-content"
-              className="content w-full h-[200px]  bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
-            >
-              <div className="text-2xl font-extrabold mb-2 text-white">
-                OTOCARE
-              </div>
-              <div className="text-sm text-white/80 font-medium">
-                is an innovative platform where users can look up services for
-                their car from nearest repair shops and place a reservation on a
-                certain time.
-              </div>
-              <div className="w-[100px]  h-10 mt-2 flex flex-row justify-start items-center gap-x-2">
-                <img className="w-8 h-8 rounded-md" src="./react.png" alt="" />
-                <img
-                  className="w-8 h-8 rounded-md"
-                  src="./firebase.png"
-                  alt=""
-                />
-              </div>
-              <div className="clicktoread3 text-sm text-slate-100 mt-2 ">
-                click to read more
-              </div>
-              <div className="text-sm text-slate-100 mt-2 pt-[20px] md:pt-[10px]">
-                <b>Role : Fullstack Developer</b>
-              </div>
-              <div className="flex flex-col w-[88%] justify-start items-start text-sm text-white/80 mt-2 absolute pr-[5%] gap-y-2 ">
-                <div className="text-sm font-medium">
-                  The app connects new students with experienced upperclassmen
-                  who serve as freshmen partners. s challenges get completed,
-                  they earn rewards, making the experience fun and rewarding.
-                </div>
+            title="OTOCARE"
+            description="is an innovative platform where users can look up services for their car from nearest repair shops and place a reservation on a certain time."
+            backgroundImage="./otocare.png"
+            technologies={["react.png", "firebase.png"]}
+            role="Fullstack Developer"
+            details="The app connects new students with experienced upperclassmen who serve as freshmen partners. As challenges get completed, they earn rewards, making the experience fun and rewarding."
+            collaborators="Samuel Dwiputra, Daniel Christian Purba, Ivan Yonathan Siwu, James Santoso"
+            isExpanded={isProject3Expanded}
+            setExpanded={setIsProject3Expanded}
+            handleExpand={handleProjectExpand}
+          />
 
-                <div className="text-sm">
-                  <b>Collaborators: </b>Samuel Dwiputra, Daniel Christian Purba,
-                  Ivan Yonathan Siwu, James Santoso
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* project4*/}
-          <div
+          <ProjectCard
             id="project4"
-            className="shadow-xl hover:shadow-2xl transition-shadow  project-section md:absolute md:top-[780px] right-0 w-full md:w-[53%] bg-green-500 h-[350px] md:h-[600px] flex flex-col justify-end items-center rounded-2xl cursor-pointer"
-            style={{
-              backgroundImage: "url('./ifvent.png')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div
-              id="project4-content"
-              className="content w-full h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
-            >
-              <div className="text-2xl font-extrabold mb-2 text-white">
-                IFVENT - <span className="font-extrabold">(continuation)</span>
-              </div>
-              <div className="text-sm text-white/80 font-medium">
-                is a comprehensive event management solution that integrates
-                advanced tech to simplify event planning and coordination in
-                Indonesia.
-              </div>
-              <div className="w-[100px]  h-10 mt-2 flex flex-row justify-start items-center gap-x-3">
-                <img className="w-8 h-6 rounded-md" src="./php.png" alt="" />
-                <img
-                  className="w-8 h-8 rounded-md"
-                  src="./laravel.png"
-                  alt=""
-                />
-                <img className="w-8 h-8 rounded-md" src="./aws.png" alt="" />
-                <img className="w-8 h-8 rounded-md" src="./eb.png" alt="" />
-              </div>
-              <div className="clicktoread4 text-sm text-slate-100 mt-2 ">
-                click to read more
-              </div>
+            title="IFVENT - (continuation)"
+            description="is a comprehensive event management solution that integrates advanced tech to simplify event planning and coordination in Indonesia."
+            backgroundImage="./ifvent.png"
+            technologies={["php.png", "laravel.png", "aws.png", "eb.png"]}
+            role="Junior Fullstack Developer"
+            details="Specializing in ticket registration, seat allocation, and other essential technical services to ensure smooth attendee experiences while empowering event organizers with reliable tools for efficient execution."
+            collaborators="Andrew J Mulia, Arvan Kusniawan, Bobby Stenly, Irfandi Riawan"
+            isExpanded={isProject4Expanded}
+            setExpanded={setIsProject4Expanded}
+            handleExpand={handleProjectExpand}
+          />
 
-              <div className="text-sm text-slate-100 mt-2 pt-[20px] md:pt-[10px]">
-                <b>Role : Junior Fullstack Developer</b>
-              </div>
-              <div className="flex flex-col w-[88%] justify-start items-start text-sm text-white/80 mt-2 absolute pr-[5%] gap-y-2">
-                <div className="text-sm font-medium">
-                  Specializing in ticket registration, seat allocation, and
-                  other essential technical services to ensure smooth attendee
-                  experiences while empowering event organizers with reliable
-                  tools for efficient execution.
-                </div>
-
-                <div className="text-sm">
-                  <b>Collaborators: </b>Andrew J Mulia, Arvan Kusniawan, Bobby
-                  Stenly, Irfandi Riawan
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* project5 */}
-          <div
+          <ProjectCard
             id="project5"
-            className="shadow-xl hover:shadow-2xl transition-shadow  project-section md:absolute md:top-[1420px] w-full md:w-[40%] left-0 h-[350px] md:h-[500px] flex flex-col justify-end items-center rounded-2xl cursor-pointer"
-            style={{
-              backgroundImage: "url('./pantry.png')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div
-              id="project5-content"
-              className="content w-full h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
-            >
-              <div className="text-2xl font-extrabold mb-2 text-white">
-                PANTRY PARTY - in progress
-              </div>
-              <div className="text-sm text-white/80 font-medium">
-                is a culinary themed web app that provides solutions for college
-                students that struggle in making daily meals
-              </div>
-              <div className="w-[100px]  h-10 mt-2 flex flex-row justify-start items-center gap-x-2">
-                <img
-                  className="w-8 h-8 rounded-md"
-                  src="./typescript.png"
-                  alt=""
-                />
-                <img className="w-8 h-8 rounded-md" src="./react.png" alt="" />
-                <img
-                  className="w-10 h-6 rounded-md"
-                  src="./tailwind.png"
-                  alt=""
-                />
-              </div>
-              <div className="clicktoread5 text-sm text-slate-100 mt-2 ">
-                click to read more
-              </div>
-              <div className="text-sm text-slate-100 mt-2 pt-[20px] md:pt-[10px]">
-                <b>Role : Fullstack Developer</b>
-              </div>
-              <div className="flex flex-col w-[88%] justify-start items-start text-sm text-white/80 mt-2 absolute pr-[5%] gap-y-2">
-                <div className="text-sm font-medium">
-                  The app helps young adults who struggle to cook by providing
-                  features like preportioning meals, step-by-step cooking guide,
-                  and vast curated simple menu options. Aiming to make the
-                  cooking experience more fun and efficient for them!
-                </div>
+            title="PANTRY PARTY - in progress"
+            description="is a culinary themed web app that provides solutions for college students that struggle in making daily meals"
+            backgroundImage="./pantry.png"
+            technologies={["typescript.png", "react.png", "tailwind.png"]}
+            role="Fullstack Developer"
+            details="The app helps young adults who struggle to cook by providing features like preportioning meals, step-by-step cooking guide, and vast curated simple menu options. Aiming to make the cooking experience more fun and efficient for them!"
+            collaborators="Samantha Michelle, Angel Pricilla Salim, Benedictus Bryant"
+            isExpanded={isProject5Expanded}
+            setExpanded={setIsProject5Expanded}
+            handleExpand={handleProjectExpand}
+          />
 
-                <div className="text-sm">
-                  <b>Collaborators: </b>Samantha Michelle, Angel Pricilla Salim,
-                  Benedictus Bryant
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* project6 */}
-          <div
+          <ProjectCard
             id="project6"
-            className="shadow-xl hover:shadow-2xl transition-shadow  project-section md:absolute md:top-[1480px] right-0 w-full md:w-[56%]  h-[350px] md:h-[500px] flex flex-col justify-end items-center rounded-2xl cursor-pointer"
-            style={{
-              backgroundImage: "url('./mockup-example.jpg')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div
-              id="project6-content"
-              className="content w-full h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
-            >
-              <div className="text-2xl font-extrabold mb-2 text-white">
-                WASTENOT - in progress
-              </div>
-              <div className="text-sm text-white/80 font-medium">
-                is a web app that aims to solve SDG number 2 - Zero Hunger by
-                providing restaurants with dashboards to track their wastage
-              </div>
-              <div className="w-[150px]  h-10 mt-2 flex flex-row justify-start items-center gap-x-2">
-                <img className="w-8 h-6 rounded-md" src="./php.png" alt="" />
-                <img
-                  className="w-8 h-8 rounded-md"
-                  src="./laravel.png"
-                  alt=""
-                />
-                <img
-                  className="w-10 h-6 rounded-md"
-                  src="./tailwind.png"
-                  alt=""
-                />
-              </div>
-              <div className="clicktoread6 text-sm text-slate-100 mt-2 ">
-                click to read more
-              </div>
-              <div className="text-sm text-slate-100 mt-2 pt-[20px] md:pt-[10px]">
-                <b>Role : Fullstack Developer</b>
-              </div>
-              <div className="flex flex-col w-[88%] justify-start items-start text-sm text-white/80 mt-2 absolute pr-[5%] gap-y-2">
-                <div className="text-sm font-medium">
-                  The app connects new students with experienced upperclassmen
-                  who serve as freshmen partners. s challenges get completed,
-                  they earn rewards, making the experience fun and rewarding.
-                </div>
-
-                <div className="text-sm">
-                  <b>Collaborators: </b>Aryo Bimo, Alfakhri Rizqulloh, Michelle
-                  Angela, Alexander Theodore
-                </div>
-              </div>
-            </div>
-          </div>
+            title="WASTENOT - in progress"
+            description="is a web app that aims to solve SDG number 2 - Zero Hunger by providing restaurants with dashboards to track their wastage"
+            backgroundImage="./mockup-example.jpg"
+            technologies={["php.png", "laravel.png", "tailwind.png"]}
+            role="Fullstack Developer"
+            details="The app connects new students with experienced upperclassmen who serve as freshmen partners. As challenges get completed, they earn rewards, making the experience fun and rewarding."
+            collaborators="Aryo Bimo, Alfakhri Rizqulloh, Michelle Angela, Alexander Theodore"
+            isExpanded={isProject6Expanded}
+            setExpanded={setIsProject6Expanded}
+            handleExpand={handleProjectExpand}
+          />
         </div>
       </div>
     </>
   );
 }
+
+interface ProjectCardProps {
+  id: string;
+  title: string;
+  description: string;
+  backgroundImage: string;
+  technologies: string[];
+  role: string;
+  details: string;
+  collaborators: string;
+  isExpanded: boolean;
+  setExpanded: (value: boolean) => void;
+  handleExpand: (
+    projectId: string,
+    isExpanded: boolean,
+    setExpanded: (value: boolean) => void
+  ) => void;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  id,
+  title,
+  description,
+  backgroundImage,
+  technologies,
+  role,
+  details,
+  collaborators,
+  isExpanded,
+  setExpanded,
+  handleExpand,
+}) => {
+  return (
+    <div
+      id={id}
+      className={`shadow-md shadow-slate-800 transition-all project-section flex flex-col justify-end items-center rounded-2xl overflow-hidden w-[90%] md:w-[48%] h-[500px]`} // Set fixed height
+      style={{
+        backgroundImage: `url('${backgroundImage}')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+      onClick={() => handleExpand(id, isExpanded, setExpanded)}
+    >
+      <div
+        id={`${id}-content`}
+        className="content w-full h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
+      >
+        <div className="text-2xl font-extrabold mb-2 text-white">{title}</div>
+        <div className="text-sm text-white/80 font-medium">{description}</div>
+        <div className="w-[100px] h-10 mt-2 flex flex-row justify-start items-center gap-x-2">
+          {technologies.map((tech, index) => (
+            <img key={index} className="w-8 h-6 rounded-md" src={tech} alt="" />
+          ))}
+        </div>
+        <div className="clicktoread text-sm text-slate-100 mt-2">
+          click to read more
+        </div>
+        <div className="text-sm text-slate-100 mt-2 pt-[20px] md:pt-[10px]">
+          <b>Role: {role}</b>
+        </div>
+        <div className="flex flex-col w-[88%] justify-start items-start text-sm text-white/80 mt-2 absolute pr-[5%] gap-y-2">
+          <div className="text-sm font-medium">{details}</div>
+          <div className="text-sm">
+            <b>Collaborators: </b>
+            {collaborators}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
