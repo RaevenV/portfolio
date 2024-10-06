@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ExperienceCard } from "./smallComponents/experienceCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +14,7 @@ export function Profile() {
     socialButtons.forEach((socialBtn) => {
       socialBtn.addEventListener("mouseenter", () => {
         gsap.to(socialBtn, {
-          translateY: -10,
+          translateY: -6,
           duration: 0.5,
           ease: "power2.out",
         });
@@ -22,8 +23,8 @@ export function Profile() {
       socialBtn.addEventListener("mouseleave", () => {
         gsap.to(socialBtn, {
           translateY: 0,
-          duration: 0.5,
-          ease: "power2.in",
+          duration: 0.6,
+          ease: "power2.out",
         });
       });
     });
@@ -174,68 +175,40 @@ export function Profile() {
         </div>
       </div>
 
-      <div className="w-full md:w-[38%] h-[500px] bg-slate-800 flex flex-col items-center justify-start pt-16  rounded-2xl shadow-md text-white gap-y-8">
-        <div className="w-full flex-grow overflow-y-auto overflow-x-hidden">
-          <div className="w-full flex flex-col justify-start items-start text-white gap-y-4">
-            <div className="item1 w-full h-20 flex flex-row justify-start items-start gap-x-4">
-              <span className="w-16 h-[1px] bg-white mt-4"></span>
-              <div className="w-[70%]  h-full flex flex-col justify-start items-start gap-y-1">
-                <div className="text-[20px] font-bold">Fullstack Developer</div>
-                <div className="text-[16px] font-medium">
-                  Pt. Solusi Ifvent Indonesia
-                </div>
-              </div>
-            </div>
+      <div className="w-full md:w-[38%] h-[500px] bg-slate-800 flex flex-col items-center justify-start pt-8 pb-8 rounded-2xl shadow-md text-white gap-y-8 px-8 mt-4">
+        <div className="w-full  flex-grow overflow-y-auto overflow-x-hidden scrollbar-hide border-l-1 border-white scroll-smooth">
+          <div className="w-full flex flex-col justify-start items-start text-white gap-y-4   pt-4 pb-4 ">
+            <ExperienceCard
+              name="Fullstack Developer"
+              company="PT Solusi Ifvent Indonesia"
+              year="June 2024 - Present"
+              description="Managed and improved API, Admin Dashboard, and product features using Laravel, PHP, and AWS. Revised and optimized database structures for better performance."
+              img={null}
+            />
 
-            <div className="w-full h-20 flex flex-row justify-start items-start gap-x-4">
-              <span className="w-16 h-[1px] bg-white mt-4"></span>
-              <div className="w-[70%]  h-full flex flex-col justify-start items-start gap-y-1">
-                <div className="text-[20px] font-bold">Fullstack Developer</div>
-                <div className="text-[16px] font-medium">
-                  Pt. Solusi Ifvent Indonesia
-                </div>
-              </div>
-            </div>
+            <ExperienceCard
+              name="Scholarship Mentor"
+              company="SASC BINUS University"
+              year="Feb 2024 - Aug 2024"
+              description="Offered personalized academic guidance and support to students, helping them enhance their learning strategies and achieve their academic goals through tailored mentoring sessions and continuous feedback."
+              img="./sasc.png"
+            />
 
-            <div className="w-full h-20 flex flex-row justify-start items-start gap-x-4">
-              <span className="w-16 h-[1px] bg-white mt-4"></span>
-              <div className="w-[70%]  h-full flex flex-col justify-start items-start gap-y-1">
-                <div className="text-[20px] font-bold">Fullstack Developer</div>
-                <div className="text-[16px] font-medium">
-                  Pt. Solusi Ifvent Indonesia
-                </div>
-              </div>
-            </div>
+            <ExperienceCard
+              name="Android Developer Intern"
+              company="Skybridge Indonesia"
+              year="Aug 2023 - Oct 2023"
+              description="Gained hands-on experience with Android development, including Kotlin, XML layouts, and Jetpack Compose. Quickly adapted to a collaborative team environment with highly experienced members."
+              img="./skybridge.jpeg"
+            />
 
-            <div className="w-full h-20 flex flex-row justify-start items-start gap-x-4">
-              <span className="w-16 h-[1px] bg-white mt-4"></span>
-              <div className="w-[70%]  h-full flex flex-col justify-start items-start gap-y-1">
-                <div className="text-[20px] font-bold">Fullstack Developer</div>
-                <div className="text-[16px] font-medium">
-                  Pt. Solusi Ifvent Indonesia
-                </div>
-              </div>
-            </div>
-
-            <div className="w-full h-20 flex flex-row justify-start items-start gap-x-4">
-              <span className="w-16 h-[1px] bg-white mt-4"></span>
-              <div className="w-[70%]  h-full flex flex-col justify-start items-start gap-y-1">
-                <div className="text-[20px] font-bold">Fullstack Developer</div>
-                <div className="text-[16px] font-medium">
-                  Pt. Solusi Ifvent Indonesia
-                </div>
-              </div>
-            </div>
-
-            <div className=" w-full h-20 flex flex-row justify-start items-start gap-x-4">
-              <span className="w-16 h-[1px] bg-white mt-4"></span>
-              <div className="w-[70%]  h-full flex flex-col justify-start items-start gap-y-1">
-                <div className="text-[20px] font-bold">Fullstack Developer</div>
-                <div className="text-[16px] font-medium">
-                  Pt. Solusi Ifvent Indonesia
-                </div>
-              </div>
-            </div>
+            <ExperienceCard
+              name="Cohort 18 of IOS Foundation"
+              company="Apple Developer Academy"
+              year="May 2023 (1 month)"
+              description="As part of Cohort 18, I was one of 31 students selected from around 500 applicants. I learned Swift, SwiftUI, and interface design to develop Social Peers, an app to motivate student mentors through challenges and badges."
+              img="./apple.jpeg"
+            />
           </div>
         </div>
       </div>

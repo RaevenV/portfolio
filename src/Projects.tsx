@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ProjectCard } from "./smallComponents/ProjectCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -79,10 +80,11 @@ export function Projects() {
     setExpanded: (value: boolean) => void
   ) => {
     const projectContent = document.querySelector(`#${projectId}-content`);
+    const isMdScreen = window.matchMedia("(min-width: 768px)").matches;
 
     if (!isExpanded) {
       gsap.to(projectContent, {
-        height: "340px",
+        height: isMdScreen ? "380px" : "360px",
         duration: 1,
         ease: "power2.out",
       });
@@ -92,7 +94,8 @@ export function Projects() {
       });
     } else {
       gsap.to(projectContent, {
-        height: "200px",
+        height: isMdScreen ? "200px" : "190px",
+        paddingBottom: "0",
         duration: 1,
         ease: "power2.out",
       });
@@ -114,7 +117,7 @@ export function Projects() {
         <img
           ref={downImgRef}
           id="down-img"
-          className="w-[40px] h-[40px] left-[50%] absolute"
+          className="w-[40px] h-[40px] left-[45%] md:left-[50%] absolute"
           src="./down.png"
           alt="Scroll down"
         />
@@ -131,7 +134,7 @@ export function Projects() {
         >
           <div className="flex flex-col">
             <div className="top w-full flex justify-start items-center font-medium font-bitter mb-[-18px] text-[18px] italic">
-              personal
+              my curated
             </div>
             <div className="w-full font-extrabold text-[35px] lg:text-[52px] flex justify-start items-start">
               PROJECTS
@@ -179,7 +182,7 @@ export function Projects() {
           <ProjectCard
             id="project3"
             title="OTOCARE"
-            description="is an innovative platform where users can look up services for their car from nearest repair shops and place a reservation on a certain time."
+            description="is an innovative platform where users can look up services for their car from nearest repair shops and place a reservation."
             backgroundImage="./otocare.png"
             technologies={["react.png", "firebase.png"]}
             role="Fullstack Developer"
@@ -193,7 +196,7 @@ export function Projects() {
           <ProjectCard
             id="project4"
             title="IFVENT - (continuation)"
-            description="is a comprehensive event management solution that integrates advanced tech to simplify event planning and coordination in Indonesia."
+            description="is a comprehensive event management solution that integrates advanced tech to simplify event planning and coordination."
             backgroundImage="./ifvent.png"
             technologies={["php.png", "laravel.png", "aws.png", "eb.png"]}
             role="Junior Fullstack Developer"
@@ -225,8 +228,8 @@ export function Projects() {
             backgroundImage="./mockup-example.jpg"
             technologies={["php.png", "laravel.png", "tailwind.png"]}
             role="Fullstack Developer"
-            details="The app connects new students with experienced upperclassmen who serve as freshmen partners. As challenges get completed, they earn rewards, making the experience fun and rewarding."
-            collaborators="Aryo Bimo, Alfakhri Rizqulloh, Michelle Angela, Alexander Theodore"
+            details="This web app provides restaurants with dashboards to track and analyze food wastage. By monitoring waste patterns, it helps restaurants make informed decisions to minimize waste, optimize resources, and promote sustainability in the food industry."
+            collaborators="Christopher Nathan, Candy Valencia, Darwin Anathapindika"
             isExpanded={isProject6Expanded}
             setExpanded={setIsProject6Expanded}
             handleExpand={handleProjectExpand}
@@ -237,73 +240,3 @@ export function Projects() {
   );
 }
 
-interface ProjectCardProps {
-  id: string;
-  title: string;
-  description: string;
-  backgroundImage: string;
-  technologies: string[];
-  role: string;
-  details: string;
-  collaborators: string;
-  isExpanded: boolean;
-  setExpanded: (value: boolean) => void;
-  handleExpand: (
-    projectId: string,
-    isExpanded: boolean,
-    setExpanded: (value: boolean) => void
-  ) => void;
-}
-
-const ProjectCard: React.FC<ProjectCardProps> = ({
-  id,
-  title,
-  description,
-  backgroundImage,
-  technologies,
-  role,
-  details,
-  collaborators,
-  isExpanded,
-  setExpanded,
-  handleExpand,
-}) => {
-  return (
-    <div
-      id={id}
-      className={`shadow-md shadow-slate-800 transition-all project-section flex flex-col justify-end items-center rounded-2xl overflow-hidden w-[90%] md:w-[48%] h-[500px]`} // Set fixed height
-      style={{
-        backgroundImage: `url('${backgroundImage}')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-      onClick={() => handleExpand(id, isExpanded, setExpanded)}
-    >
-      <div
-        id={`${id}-content`}
-        className="content w-full h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%] overflow-hidden"
-      >
-        <div className="text-2xl font-extrabold mb-2 text-white">{title}</div>
-        <div className="text-sm text-white/80 font-medium">{description}</div>
-        <div className="w-[100px] h-10 mt-2 flex flex-row justify-start items-center gap-x-2">
-          {technologies.map((tech, index) => (
-            <img key={index} className="w-8 h-6 rounded-md" src={tech} alt="" />
-          ))}
-        </div>
-        <div className="clicktoread text-sm text-slate-100 mt-2">
-          click to read more
-        </div>
-        <div className="text-sm text-slate-100 mt-2 pt-[20px] md:pt-[10px]">
-          <b>Role: {role}</b>
-        </div>
-        <div className="flex flex-col w-[88%] justify-start items-start text-sm text-white/80 mt-2 absolute pr-[5%] gap-y-2">
-          <div className="text-sm font-medium">{details}</div>
-          <div className="text-sm">
-            <b>Collaborators: </b>
-            {collaborators}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
