@@ -30,8 +30,8 @@ export function Projects() {
               gsap.to("#down-img", { opacity: 0, duration: 0.1 });
               gsap.fromTo(
                 "#title",
-                { top: 400 },
-                { top: 0, duration: 0.6, ease: "back.out(1.7)" }
+                { top: 200, opacity:0 },
+                { top: 0, opacity:1, duration: 0.6, ease: "back.out(1.7)" }
               );
             },
           });
@@ -130,11 +130,11 @@ export function Projects() {
         <div className="scroll-block top-0 absolute w-full h-10"></div>
         <div
           id="title"
-          className="w-full h-20 absolute font-raleway flex flex-col items-center"
+          className="w-full h-20 absolute font-raleway flex flex-col items-center opacity-0"
         >
           <div className="flex flex-col">
             <div className="top w-full flex justify-start items-center font-medium font-bitter mb-[-18px] text-[18px] italic">
-              my curated
+              curated
             </div>
             <div className="w-full font-extrabold text-[35px] lg:text-[52px] flex justify-start items-start">
               PROJECTS

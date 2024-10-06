@@ -105,7 +105,7 @@ export default function NavbarMain() {
   return (
     <div
       id="nav-container"
-      className="relative mt-[-12px] md:pt-[12px] lg:fixed border-b-1 border-slate-800 h-20 w-full bg-slate-50 flex flex-row justify-center items-center z-50"
+      className="relative mt-[-12px] md:pt-[12px] lg:fixed border-b-1 border-slate-800 h-20 w-full bg-slate-100 flex flex-row justify-center items-center z-50"
     >
       <div
         id="small-nav"

@@ -106,9 +106,9 @@ export function Profile() {
   return (
     <div
       id="Profile"
-      className="mb-20 md:mb-0 relative w-full h-auto md:h-[590px] pb-1 flex flex-col md:flex-row items-center justify-between overflow-hidden pt-10 md:pt-20 px-[6%]"
+      className="mb-20 md:mb-0 relative w-full h-auto md:h-[590px] pb-1 flex flex-col md:flex-row items-center justify-between overflow-hidden pt-10 md:pt-20 px-[6%] "
     >
-      <div className="w-full md:w-[60%] h-full bg-slate-800 p-8  rounded-2xl md:p-16 shadow-md">
+      <div className="w-full md:w-[60%] h-full bg-gradient-to-r from-slate-900 to-slate-700 p-8  rounded-2xl md:p-16 shadow-md">
         <div
           id="Profile-data"
           className="w-full h-full flex flex-col justify-start items-start"
@@ -175,7 +175,7 @@ export function Profile() {
         </div>
       </div>
 
-      <div className="w-full md:w-[38%] h-[500px] bg-slate-800 flex flex-col items-center justify-start pt-8 pb-8 rounded-2xl shadow-md text-white gap-y-8 px-8 mt-4">
+      <div className="w-full md:w-[38%] h-[500px] bg-gradient-to-r from-slate-700 to-slate-500 flex flex-col items-center justify-start pt-8 pb-8 rounded-2xl shadow-md text-white gap-y-8 px-8 mt-4">
         <div className="w-full  flex-grow overflow-y-auto overflow-x-hidden scrollbar-hide border-l-1 border-white scroll-smooth">
           <div className="w-full flex flex-col justify-start items-start text-white gap-y-4   pt-4 pb-4 ">
             <ExperienceCard

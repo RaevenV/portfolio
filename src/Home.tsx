@@ -13,7 +13,7 @@ export function Home() {
 
   return (
     <main>
-      <div className="relative home-container pt-8 text-slate-800 min-h-screen">
+      <div className="relative home-container pt-8 text-slate-800  min-h-screen">
         <Profile />
         <Projects />
       </div>
