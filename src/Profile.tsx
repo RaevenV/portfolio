@@ -113,13 +113,13 @@ export function Profile() {
           id="Profile-data"
           className="w-full h-full flex flex-col justify-start items-start"
         >
-          <h1 className="relative text-[35px] md:text-[52px] font-bold font-raleway tracking-tight z-20 italic text-white mb-8">
+          <h1 className="relative text-[28px] sm:text-[30px] md:text-[52px] font-bold font-raleway tracking-tight z-20 italic text-white mb-2 md:mb-8">
             <div ref={nameRef} className="relative z-20 ">
               RAEVEN VILLAREL
             </div>
-            <div className="absolute w-[102%] h-12 bg-slate-400 z-[-1] top-[100%] translate-y-[-80%] md:translate-y-[-100%] opacity-[0.8]"></div>
+            <div className="absolute w-[102%] h-8 md:h-12 bg-slate-400 z-[-1] top-[100%] translate-y-[-80%] md:translate-y-[-100%] opacity-[0.8]"></div>
           </h1>
-          <p className="max-w-[550px] font-raleway tracking-tight font-medium text-[16px] text-left mt-4 text-white mb-8">
+          <p className="max-w-[550px] font-raleway tracking-tight font-medium text-[16px] text-left mt-4 text-white  md:mb-8">
             Currently a student at Binus Alam Sutera, majoring in Computer
             Science and specializing in Software Engineering. Passionate about
             frontend development, self-improvement, and leadership.

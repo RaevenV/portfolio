@@ -80,11 +80,30 @@ export function Projects() {
     setExpanded: (value: boolean) => void
   ) => {
     const projectContent = document.querySelector(`#${projectId}-content`);
+    const isLgScreen = window.matchMedia("(min-width: 1024px)").matches;
     const isMdScreen = window.matchMedia("(min-width: 768px)").matches;
+    const isSmScreen = window.matchMedia("(max-width: 360px)").matches;
+
+    let expandedHeight: string;
+    let collapsedHeight: string;
+
+    if (isLgScreen) {
+      expandedHeight = "360px";
+      collapsedHeight = "220px";
+    } else if (isMdScreen) {
+      expandedHeight = "380px";
+      collapsedHeight = "200px";
+    } else if (isSmScreen) {
+      expandedHeight = "420px";
+      collapsedHeight = "210px";
+    } else {
+      expandedHeight = "360px";
+      collapsedHeight = "180px";
+    }
 
     if (!isExpanded) {
       gsap.to(projectContent, {
-        height: isMdScreen ? "380px" : "360px",
+        height: expandedHeight,
         duration: 1,
         ease: "power2.out",
       });
@@ -94,7 +113,7 @@ export function Projects() {
       });
     } else {
       gsap.to(projectContent, {
-        height: isMdScreen ? "200px" : "190px",
+        height: collapsedHeight,
         paddingBottom: "0",
         duration: 1,
         ease: "power2.out",
