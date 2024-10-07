@@ -187,7 +187,7 @@ export function Projects() {
           <ProjectCard
             id="project2"
             title="DOOIT"
-            description="is a web-based financial education app that fills the gap of financial literacy in Indonesia by providing curated modules, mentoring, and forum discussions."
+            description="is a web app that fills the gap of financial literacy in Indonesia by providing curated modules, mentoring, and forum discussions."
             backgroundImage="./dooit.png"
             technologies={["react.png", "firebase.png"]}
             role="Fullstack Developer"
