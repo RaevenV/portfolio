@@ -168,7 +168,7 @@ export function Projects() {
 
         <div
           id="project-window"
-          className="w-full md:w-[80%] min-h-[1800px] md:min-h-[1400px] rounded-md flex flex-col md:flex-row flex-wrap justify-between items-center md:items-start gap-y-4 md:gap-y-8 cursor-pointer scroll-smooth"
+          className="w-full md:w-[80%] min-h-[1800px] md:min-h-[1400px] rounded-md flex flex-col md:flex-row flex-wrap justify-between items-center md:items-start gap-y-4 md:gap-y-8 scroll-smooth"
         >
           <ProjectCard
             id="project1"
