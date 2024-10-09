@@ -32,7 +32,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <div
       id={id}
-      className={`shadow-md shadow-slate-800 transition-all project-section flex flex-col justify-end items-center rounded-2xl overflow-hidden w-[90%] md:w-[48%] h-[500px]`} // Set fixed height
+      className={`cursor-pointer shadow-md shadow-slate-800 transition-all project-section flex flex-col justify-end items-center rounded-2xl overflow-hidden w-[90%] md:w-[48%] h-[500px]`} // Set fixed height
       style={{
         backgroundImage: `url('${backgroundImage}')`,
         backgroundSize: "cover",
@@ -42,7 +42,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     >
       <div
         id={`${id}-content`}
-        className="content w-full h-[200px] md:h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%]"
+        className="content w-full h-[190px] md:h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%]"
       >
         <div className="text-lg md:text-2xl font-extrabold mb-2 text-white">{title}</div>
         <div className=" text-[12px] md:text-sm text-white/80 font-medium text-justify">{description}</div>
