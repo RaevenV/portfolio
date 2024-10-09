@@ -45,7 +45,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         className="content w-full h-[200px] md:h-[200px] bg-gradient-to-t from-black via-black/70 to-transparent p-6 rounded-b-2xl font-raleway relative px-[5%]"
       >
         <div className="text-lg md:text-2xl font-extrabold mb-2 text-white">{title}</div>
-        <div className=" text-[12px] md:text-sm text-white/80 font-medium">{description}</div>
+        <div className=" text-[12px] md:text-sm text-white/80 font-medium text-justify">{description}</div>
         <div className="w-[100px] h-10 mt-2 flex flex-row justify-start items-center gap-x-2">
           {technologies.map((tech, index) => (
             <img key={index} className="md:w-8 md:h-6 h-6 w-6 rounded-md" src={tech} alt="" />

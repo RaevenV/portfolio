@@ -191,7 +191,7 @@ export function Projects() {
             backgroundImage="./dooit.png"
             technologies={["react.png", "firebase.png"]}
             role="Fullstack Developer"
-            details="The app doesn't focus on how to generate money. Instead, we focus on how to manage the money that we have, increasing self-worth, and laying the fundamentals of building a business."
+            details="The app focuses on how to manage the money that we have, increasing self-worth, and laying the fundamentals of building a business."
             collaborators="Ryan Errando, Samantha Michelle Ferdi Karjadiputra, and Darwin Anathapindika"
             isExpanded={isProject2Expanded}
             setExpanded={setIsProject2Expanded}
@@ -205,7 +205,7 @@ export function Projects() {
             backgroundImage="./otocare.png"
             technologies={["react.png", "firebase.png"]}
             role="Fullstack Developer"
-            details="The app connects new students with experienced upperclassmen who serve as freshmen partners. As challenges get completed, they earn rewards, making the experience fun and rewarding."
+            details="helps car owners find nearby repair shops, browse available services, and quickly place reservations, making it easy to schedule automotive care."
             collaborators="Samuel Dwiputra, Daniel Christian Purba, Ivan Yonathan Siwu, James Santoso"
             isExpanded={isProject3Expanded}
             setExpanded={setIsProject3Expanded}
@@ -233,7 +233,7 @@ export function Projects() {
             backgroundImage="./pantry.png"
             technologies={["typescript.png", "react.png", "tailwind.png"]}
             role="Fullstack Developer"
-            details="The app helps young adults who struggle to cook by providing features like preportioning meals, step-by-step cooking guide, and vast curated simple menu options. Aiming to make the cooking experience more fun and efficient for them!"
+            details="The app helps young adults who struggle to cook by providing features like preportioning meals, step-by-step cooking guide, and simple menu options. Aiming to make the cooking experience more fun and efficient."
             collaborators="Samantha Michelle, Angel Pricilla Salim, Benedictus Bryant"
             isExpanded={isProject5Expanded}
             setExpanded={setIsProject5Expanded}
@@ -247,7 +247,7 @@ export function Projects() {
             backgroundImage="./mockup-example.jpg"
             technologies={["php.png", "laravel.png", "tailwind.png"]}
             role="Fullstack Developer"
-            details="This web app provides restaurants with dashboards to track and analyze food wastage. By monitoring waste patterns, it helps restaurants make informed decisions to minimize waste, optimize resources, and promote sustainability in the food industry."
+            details="This web app provides restaurants with dashboards to track and analyze food wastage. It helps restaurants make informed decisions to minimize waste, optimize resources, and promote sustainability in the food industry."
             collaborators="Christopher Nathan, Candy Valencia, Darwin Anathapindika"
             isExpanded={isProject6Expanded}
             setExpanded={setIsProject6Expanded}
