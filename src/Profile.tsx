@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function Profile() {
   const nameRef = useRef<HTMLDivElement>(null);
   const jobContainerRef = useRef<HTMLDivElement>(null);
-
+  
   useEffect(() => {
     const socialButtons = document.querySelectorAll(".social-button");
     socialButtons.forEach((socialBtn) => {
@@ -176,7 +176,7 @@ export function Profile() {
       </div>
 
       <div className="w-full md:w-[38%] h-[500px] bg-gradient-to-r from-slate-700 to-slate-500 flex flex-col items-center justify-start pt-8 pb-8 rounded-2xl shadow-md text-white gap-y-8 px-8 mt-4">
-        <div className="w-full  flex-grow overflow-y-auto overflow-x-hidden scrollbar-hide border-l-1 border-white scroll-smooth">
+        <div className="w-full  flex-grow overflow-y-auto overflow-x-hidden scrollbar-hide border-l-1 border-white scroll-smooth" >
           <div className="w-full flex flex-col justify-start items-start text-white gap-y-4   pt-4 pb-4 ">
             <ExperienceCard
               name="Fullstack Developer"
