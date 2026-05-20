@@ -1,28 +1,27 @@
-const { nextui } = require("@nextui-org/react");
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       fontFamily: {
-        kanit: ["Kanit", "sans-serif"],
-        rowdies: ["Rowdies", "sans-serif"],
-        raleway: ["Raleway", "sans-serif"],
-        archivo: ["Archivo", "sans-serif"],
-        bitter: ["Bitter", "serif"],
+        display: ['"Playfair Display"', "serif"],
+        sans: ['"DM Sans"', "sans-serif"],
+        mono: ['"JetBrains Mono"', "monospace"],
       },
       colors: {
-        white: "#f8fafc",
-        black: "#0f172a",
-        blue: "#60a5fa",
+        ink: "#1a1a2e",
+        "ink-light": "#4a4a6a",
+        surface: "#f7f6f3",
+        "surface-alt": "#eeecea",
+        accent: "#212447",
+        "accent-light": "#2e3166",
+        border: "#ddd9d3",
       },
     },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [],
 };

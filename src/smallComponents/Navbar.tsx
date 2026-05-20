@@ -1,182 +1,83 @@
-import { useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useState } from "react";
 import { Link } from "react-scroll";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function NavbarMain() {
-  useEffect(() => {
-    const menu = document.querySelector("#menu");
-    const homeContainer = document.querySelector(".home-container");
-    const close = document.querySelector("#close");
-    const smallnav = document.querySelector("#small-nav");
-    const links = document.querySelectorAll(".nav-links a");
-
-    links.forEach((link) => {
-      const line = link.querySelector(".line");
-      link.addEventListener("mouseenter", () => {
-        gsap.fromTo(
-          line,
-          { width: "0%", opacity: 1 },
-          { width: "100%", duration: 0.15, ease: "power2.out" }
-        );
-      });
-      link.addEventListener("mouseleave", () => {
-        gsap.to(line, {
-          width: "0%",
-          duration: 0.5,
-          ease: "power2.out",
-          opacity: 0,
-        });
-      });
-    });
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#nav-container",
-      },
-    });
-
-     tl.fromTo("#nav-container", { y: 0 }, { y: 15, duration: 0.3 }).to(
-       "#nav-container",
-       { y: 10, duration: 0.6 }
-     );
-
-    const openMenu = () => {
-      smallnav?.classList.remove("hidden");
-      smallnav?.classList.add("flex");
-      gsap.fromTo(
-        smallnav,
-        { right: "100%", opacity: 1 },
-        {
-          right: "12%",
-          duration: 0.5,
-          ease: "power2.out",
-          onComplete: () => {
-            gsap.to(smallnav, {
-              right: "16%",
-              duration: 0.3,
-              ease: "bounce.out",
-            });
-          },
-        }
-      );
-      menu?.classList.add("hidden");
-      close?.classList.remove("hidden");
-    };
-
-    const closeMenu = () => {
-      gsap.to(smallnav, {
-        right: "100%",
-        duration: 0.5,
-        ease: "power2.in",
-        onComplete: () => {
-          smallnav?.classList.remove("flex");
-          smallnav?.classList.add("hidden");
-        },
-      });
-      menu?.classList.remove("hidden");
-      close?.classList.add("hidden");
-    };
-
-    const handleLinkClick = () => {
-      closeMenu();
-    };
-
-    menu?.addEventListener("click", openMenu);
-    close?.addEventListener("click", closeMenu);
-    homeContainer?.addEventListener("click", closeMenu);
-    
-
-    links.forEach((link) => {
-      link.addEventListener("click", handleLinkClick);
-    });
-
-    return () => {
-      menu?.removeEventListener("click", openMenu);
-      close?.removeEventListener("click", closeMenu);
-      links.forEach((link) => {
-        link.removeEventListener("click", handleLinkClick);
-      });
-    };
-  }, []);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div
-      id="nav-container"
-      className="relative mt-[-12px] md:pt-[12px] lg:fixed border-b-1 border-slate-800 h-20 w-full bg-slate-100 flex flex-row justify-center items-center z-50"
-    >
-      <div
-        id="small-nav"
-        className="z-6 hidden justify-center items-start md:hidden absolute top-[70px] right-[100%] bg-slate-50 rounded-3xl border-1 border-black w-[70%] md:w-1/2 h-[500px] text-slate-800"
-      >
-        <div className="nav-links h-1/2 flex flex-col justify-center items-center w-[80%] gap-y-4">
+    <header className="fixed top-0 left-0 right-0 z-50 h-16 bg-surface/90 backdrop-blur-sm border-b border-border flex items-center px-6 md:px-12">
+      <div className="w-full flex items-center justify-between">
+        <span className="font-display font-bold text-lg text-ink tracking-tight">
+          RV
+        </span>
+
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-ink-light">
           <Link
-            to="Profile"
+            to="profile"
             smooth={true}
-            duration={1000}
-            offset={-200}
-            className="font-bold w-[50%] h-[15%] flex flex-col justify-center items-center rounded-2xl hover:text-blue transition-colors duration-200 ease-in cursor-pointer"
+            duration={800}
+            offset={-64}
+            className="relative cursor-pointer hover:text-ink transition-colors duration-200 group"
           >
             Profile
-            <span className="line w-0 bg-blue mt-2 h-[1px] block opacity-0"></span>
+            <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-300" />
           </Link>
           <Link
             to="projects"
             smooth={true}
-            duration={1000}
-            offset={0}
-            className="font-bold w-[50%] h-[15%] flex flex-col justify-center items-center rounded-2xl hover:text-blue transition-colors duration-200 ease-in cursor-pointer"
+            duration={800}
+            offset={-64}
+            className="relative cursor-pointer hover:text-ink transition-colors duration-200 group"
           >
             Projects
-            <span className="line w-0 bg-blue mt-2 h-[1px] block opacity-0"></span>
+            <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-300" />
           </Link>
-          
-        </div>
+        </nav>
+
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden flex flex-col gap-1.5 w-6 cursor-pointer"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label="Toggle menu"
+        >
+          <span
+            className={`block h-px bg-ink transition-all duration-300 ${menuOpen ? "w-6 rotate-45 translate-y-2" : "w-6"}`}
+          />
+          <span
+            className={`block h-px bg-ink transition-all duration-300 ${menuOpen ? "opacity-0 w-0" : "w-4"}`}
+          />
+          <span
+            className={`block h-px bg-ink transition-all duration-300 ${menuOpen ? "w-6 -rotate-45 -translate-y-2.5" : "w-6"}`}
+          />
+        </button>
       </div>
-      <nav
-        className="pb-2 w-full h-4/5 bg-transparent text-slate-800 flex flex-row justify-end md:justify-center items-center px-[2%] md:px-[6%] z-5"
-        id="nav-wrapper"
+
+      {/* Mobile menu dropdown */}
+      <div
+        className={`absolute top-16 left-0 right-0 bg-surface border-b border-border flex flex-col items-center gap-6 py-8 text-sm font-medium text-ink-light transition-all duration-300 md:hidden ${menuOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}
       >
-        <div className="w-20 h-full relative align-middle mb-2">
-          <img
-            className="md:hidden w-9 h-9 absolute top-[40%] right-[25%] z-3 cursor-pointer"
-            src="/menu.png"
-            alt="Menu"
-            id="menu"
-          />
-          <img
-            className="hidden md:hidden w-9 h-9 absolute top-[40%] right-[25%] z-2 cursor-pointer"
-            src="/close.png"
-            alt="Close"
-            id="close"
-          />
-        </div>
-        <div className="nav-links hidden md:flex w-full flex-row justify-end items-center font-kanit font-[300] pt-2 gap-x-8">
-          <Link
-            to="Profile"
-            smooth={true}
-            duration={1000}
-            offset={-100}
-            className="relative h-10 w-20 flex flex-col items-center justify-center hover:text-blue transition-colors duration-200 ease-in cursor-pointer"
-          >
-            <div className="mb-1 font-raleway">Profile</div>
-            <span className="line w-0 bg-blue h-[1px] block opacity-0"></span>
-          </Link>
-          <Link
-            to="projects"
-            smooth={true}
-            duration={1000}
-            offset={-200}
-            className="relative h-10 w-20 flex flex-col items-center justify-center hover:text-blue transition-colors duration-200 ease-in cursor-pointer"
-          >
-            <div className="mb-1 font-raleway">Projects</div>
-            <span className="line w-0 bg-blue h-[1px] block opacity-0"></span>
-          </Link>
-          
-        </div>
-      </nav>
-    </div>
+        <Link
+          to="profile"
+          smooth={true}
+          duration={800}
+          offset={-64}
+          onClick={() => setMenuOpen(false)}
+          className="cursor-pointer hover:text-ink transition-colors duration-200"
+        >
+          Profile
+        </Link>
+        <Link
+          to="projects"
+          smooth={true}
+          duration={800}
+          offset={-64}
+          onClick={() => setMenuOpen(false)}
+          className="cursor-pointer hover:text-ink transition-colors duration-200"
+        >
+          Projects
+        </Link>
+      </div>
+    </header>
   );
 }

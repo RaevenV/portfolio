@@ -1,16 +1,9 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { Home } from "./Home";
 import Navbar from "./smallComponents/Navbar";
 import Footer from "./smallComponents/Footer";
 
 function App() {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate("/");
-  }, [navigate]);
-
   return (
     <>
       <Navbar />
