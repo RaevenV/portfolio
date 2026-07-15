@@ -9,6 +9,7 @@ interface ProjectCardProps {
   role: string;
   details: string;
   collaborators: string;
+  ongoing?: boolean;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -19,6 +20,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   role,
   details,
   collaborators,
+  ongoing,
 }) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -37,6 +39,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       {/* Always-visible gradient overlay at bottom */}
       <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent" />
 
+      {/* Ongoing flag */}
+      {ongoing && (
+        <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/40">
+          <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+          <span className="font-mono text-[10px] uppercase tracking-widest text-white font-bold">
+            Ongoing
+          </span>
+        </div>
+      )}
+
       {/* Collapsed state: title + tech icons */}
       <div
         className={`absolute bottom-0 left-0 right-0 p-5 transition-all duration-500 ease-out ${expanded ? "opacity-0 translate-y-2 pointer-events-none" : "opacity-100 translate-y-0"}`}
@@ -47,7 +59,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               key={i}
               src={tech}
               alt=""
-              className="w-5 h-5 rounded object-contain bg-white/10 p-0.5"
+              className="w-8 h-8 rounded object-contain bg-white/10 p-1"
             />
           ))}
         </div>
@@ -79,7 +91,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               key={i}
               src={tech}
               alt=""
-              className="w-5 h-5 rounded object-contain bg-white/10 p-0.5"
+              className="w-8 h-8 rounded object-contain bg-white/10 p-1"
             />
           ))}
         </div>

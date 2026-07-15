@@ -2,6 +2,25 @@ import { ProjectCard } from "./smallComponents/ProjectCard";
 
 const projects = [
   {
+    id: "project7",
+    title: "LITTLE BOOTH",
+    description:
+      "A full-stack photobooth platform pairing a packaged desktop app with an admin dashboard, built for a growing photobooth business.",
+    backgroundImage: "./mockup-example.jpg",
+    technologies: [
+      "electron.webp",
+      "c++.webp",
+      "react.png",
+      "tailwind.png",
+      "postgresql.webp",
+    ],
+    role: "Fullstack Developer",
+    details:
+      "Designed to facilitate an upcoming photobooth business, Little Booth includes admin dashboards and a packaged distributable app built for scalability. Features background removal, Canon camera SDK integration, and DNP printer SDK integration.",
+    collaborators: "Ivan Yonathan Siwu, Michelle Jono",
+    ongoing: true,
+  },
+  {
     id: "project0",
     title: "KIN",
     description:
@@ -10,7 +29,7 @@ const projects = [
     technologies: ["react.png", "typescript.png", "supabase.png"],
     role: "Fullstack Developer",
     details:
-      "KIN bridges the gap between busy parents and their children by providing a shared space for meaningful interaction, habit building, and emotional connection — all from a mobile-first experience.",
+      "KIN bridges the gap between busy parents and their children by providing a shared space for meaningful interaction, habit building, and emotional connection, all from a mobile-first experience.",
     collaborators: "Ryan Errando, Samuel Dwiputra Tjan",
   },
   {
@@ -110,14 +129,14 @@ export function Projects() {
           </h2>
         </div>
         <p className="hidden md:block text-sm text-ink-light max-w-xs text-right leading-relaxed">
-          A blend of creativity and technology — each solving real-world
+          A blend of creativity and technology, each solving real-world
           problems through thoughtful design and code.
         </p>
       </div>
 
       {/* Mobile description */}
       <p className="md:hidden text-sm text-ink-light mb-8 leading-relaxed">
-        A blend of creativity and technology — each solving real-world problems
+        A blend of creativity and technology, each solving real-world problems
         through thoughtful design and code.
       </p>
 
