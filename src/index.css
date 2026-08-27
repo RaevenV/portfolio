@@ -111,3 +111,50 @@
 
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Custom editorial cursor ─────────────────────────────── */
+.has-cursor,
+.has-cursor a,
+.has-cursor button,
+.has-cursor [role="button"],
+.has-cursor input,
+.has-cursor textarea,
+.has-cursor summary { cursor: none; }
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #fff;              /* difference-blend → visible on any surface */
+}
+
+.cursor-ring {
+  width: 30px;
+  height: 30px;
+  border-radius: 9999px;
+  border: 1px solid #fff;
+  transition:
+    width var(--dur-short) var(--ease-out),
+    height var(--dur-short) var(--ease-out),
+    border-color var(--dur-short) var(--ease-out);
+}
+.cursor-ring.is-active { width: 52px; height: 52px; border-color: #fff; }
+.cursor-ring.is-down { width: 22px; height: 22px; }
+
+/* Touch / reduced-motion devices never see it */
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-dot, .cursor-ring { display: none; }
+  .has-cursor, .has-cursor a, .has-cursor button { cursor: auto; }
+}
