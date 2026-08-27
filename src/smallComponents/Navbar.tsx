@@ -11,12 +11,6 @@ const NAV = [
   { to: "contact", label: "Contact", offset: -80 },
 ];
 
-const issueDate = new Date().toLocaleDateString("en-GB", {
-  day: "2-digit",
-  month: "long",
-  year: "numeric",
-});
-
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
