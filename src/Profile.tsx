@@ -60,7 +60,7 @@ export function Profile() {
         id="profile"
         className="w-full px-[6%] pt-16 md:pt-24 pb-16 md:pb-24 scroll-mt-24"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] gap-x-14 gap-y-10 items-end">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] gap-x-14 gap-y-10 items-stretch">
           <div>
             <p className="h-label h-rise mb-6">
               Computer Science Graduate · Binus Alam Sutera
@@ -93,14 +93,12 @@ export function Profile() {
           </div>
 
           {/* Editorial portrait */}
-          <figure className="h-rise h-rise-2 lg:justify-self-end w-full max-w-[320px]">
-            <div className="border border-ink p-1.5 bg-paper-2">
-              <img
-                src="./me.png"
-                alt="Raeven Villarel Widjaja"
-                className="w-full h-auto object-contain grayscale contrast-[1.05]"
-              />
-            </div>
+          <figure className="h-rise h-rise-2 w-full h-full flex items-center justify-center lg:justify-end">
+            <img
+              src="./me.png"
+              alt="Raeven Villarel Widjaja"
+              className="w-full max-w-[320px] aspect-[4/5] object-cover object-top"
+            />
           </figure>
         </div>
       </section>
