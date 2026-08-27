@@ -1,36 +1,41 @@
+/* Hallmark · footer: Ft6 Letter close — a signoff, not a corporate "Thank You".
+ * Includes the new Contact section anchor. */
+
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#161830] px-6 md:px-12 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-      <div className="flex flex-col gap-1">
-        <span className="font-display font-bold text-white text-2xl">RV</span>
-        <span className="font-mono text-xs text-slate-400 uppercase tracking-widest">
-          Fullstack Developer
-        </span>
-      </div>
-
-      <div className="flex flex-col items-start md:items-center gap-1">
-        <p className="text-sm text-slate-300 font-medium">Raeven Villarel</p>
-        <p className="font-mono text-xs text-slate-500">
-          &copy; {new Date().getFullYear()} — All rights reserved
+    <footer id="contact" className="w-full scroll-mt-24">
+      <div className="w-full px-[6%] border-t border-ink pt-16 md:pt-24 pb-16">
+        <p className="h-label mb-6">§ Contact</p>
+        <p className="font-display font-normal text-ink [font-size:var(--text-display-s)] max-w-[18ch] leading-[1.05] [overflow-wrap:anywhere] min-w-0">
+          Have something worth building? Let&apos;s talk.
         </p>
-      </div>
 
-      <div className="flex items-center gap-3">
-        {[
-          { href: "https://github.com/RaevenV", label: "GitHub" },
-          { href: "https://www.linkedin.com/in/raeven-villarel-81093421a/", label: "LinkedIn" },
-          { href: "https://www.instagram.com/raevenvw", label: "Instagram" },
-        ].map((s) => (
+        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-[0.14em]">
+          <a href="https://github.com/RaevenV" target="_blank" rel="noreferrer" className="h-link py-1">
+            GitHub ↗
+          </a>
           <a
-            key={s.label}
-            href={s.href}
+            href="https://www.linkedin.com/in/raeven-villarel-81093421a/"
             target="_blank"
             rel="noreferrer"
-            className="font-mono text-xs text-slate-400 hover:text-white transition-colors duration-200 underline underline-offset-4 decoration-slate-600 hover:decoration-white"
+            className="h-link py-1"
           >
-            {s.label}
+            LinkedIn ↗
           </a>
-        ))}
+          <a href="https://www.instagram.com/raevenvw" target="_blank" rel="noreferrer" className="h-link py-1">
+            Instagram ↗
+          </a>
+        </div>
+      </div>
+
+      <div className="w-full px-[6%] border-t border-rule py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <p className="font-display text-ink text-[length:var(--text-lg)]">
+          Until next time,{" "}
+          <span className="text-accent">Raeven.</span>
+        </p>
+        <p className="h-label">
+          © {new Date().getFullYear()} Raeven Villarel Widjaja
+        </p>
       </div>
     </footer>
   );

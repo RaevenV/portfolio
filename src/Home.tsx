@@ -3,7 +3,7 @@ import { Projects } from "./Projects";
 
 export function Home() {
   return (
-    <main className="w-full bg-surface">
+    <main className="home-container w-full bg-paper text-ink">
       <Profile />
       <Projects />
     </main>

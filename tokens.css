@@ -1,0 +1,49 @@
+/* Hallmark · tokens · genre: editorial · theme: custom (warm-ivory paper · rust accent)
+ * Portable design system for the Raeven Villarel Widjaja portfolio.
+ * Every colour / font / space value the build uses references a name below.
+ */
+:root {
+  /* ── Paper → Ink ramp (warm anchor, hue ~60–85) ── */
+  --color-paper:      oklch(97% 0.008 85);
+  --color-paper-2:    oklch(94% 0.011 82);
+  --color-rule:       oklch(86% 0.010 78);
+  --color-neutral:    oklch(60% 0.008 70);
+  --color-muted:      oklch(45% 0.010 65);
+  --color-ink-2:      oklch(34% 0.012 60);
+  --color-ink:        oklch(21% 0.012 55);
+
+  /* ── Accent (rust) — used < 5% of any viewport ── */
+  --color-accent:     oklch(52% 0.16 40);
+  --color-accent-2:   oklch(46% 0.15 38);
+  --color-accent-ink: oklch(98% 0.010 85);
+  --color-focus:      oklch(52% 0.16 40);
+
+  /* ── Type families (2 + 1) ── */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body:    "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* ── 4-point spacing scale ── */
+  --space-3xs: 0.25rem; --space-2xs: 0.5rem;  --space-xs: 0.75rem;
+  --space-sm:  1rem;    --space-md:  1.5rem;   --space-lg: 2rem;
+  --space-xl:  3rem;    --space-2xl: 4.5rem;   --space-3xl: 7rem;
+
+  /* ── Type scale (perfect-fourth-ish) ── */
+  --text-xs:  0.75rem;  --text-sm: 0.875rem;   --text-md: 1.0625rem;
+  --text-lg:  1.375rem; --text-xl: 1.75rem;    --text-2xl: 2.25rem;
+  --text-3xl: 3rem;
+  --text-display-s: clamp(2.5rem, 6vw, 4rem);
+  --text-display:   clamp(3rem, 9vw, 6.5rem);
+
+  /* ── Motion ── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.4, 0, 1, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short: 220ms;
+  --dur-med:   420ms;
+
+  /* ── Structure ── */
+  --rule-hair: 1px;
+  --radius-sm:   2px;
+  --radius-card: 4px;
+}

@@ -1,4 +1,5 @@
 interface ExperienceCardProps {
+  index: number;
   name: string;
   company: string;
   year: string;
@@ -6,7 +7,10 @@ interface ExperienceCardProps {
   img: string | null;
 }
 
+/* Hallmark · editorial timeline row — numbered, hairline-divided, roman heads. */
+
 export const ExperienceCard: React.FC<ExperienceCardProps> = ({
+  index,
   name,
   company,
   year,
@@ -14,23 +18,38 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
   img,
 }) => {
   return (
-    <div className="relative pl-6 group">
-      {/* Dot on the shared timeline line */}
-      <div className="absolute left-[-4px] top-[7px] w-2 h-2 rounded-full border-2 border-accent bg-surface group-hover:bg-accent transition-colors duration-300 z-10" />
+    <li className="group grid grid-cols-[auto_minmax(0,1fr)] gap-x-5 md:gap-x-8 py-7 border-t border-rule first:border-t-0">
+      <span className="font-mono text-xs text-accent pt-1.5 tabular-nums">
+        {String(index).padStart(2, "0")}
+      </span>
 
-      <div className="font-mono mb-0.5 text-xs text-ink-light tracking-wide uppercase">
-        {year}
+      <div className="min-w-0">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <h3 className="font-display font-normal text-ink text-[length:var(--text-lg)] leading-tight">
+            {name}
+          </h3>
+          <span className="font-mono text-xs uppercase tracking-[0.1em] text-muted whitespace-nowrap">
+            {year}
+          </span>
+        </div>
+
+        <div className="mt-1.5 flex items-center gap-x-2">
+          {img && (
+            <img
+              src={img}
+              alt={company}
+              className="w-5 h-5 object-contain rounded-[2px]"
+            />
+          )}
+          <span className="text-[length:var(--text-sm)] font-medium text-ink-2">
+            {company}
+          </span>
+        </div>
+
+        <p className="mt-3 max-w-measure text-[length:var(--text-sm)] leading-relaxed text-muted">
+          {description}
+        </p>
       </div>
-      <div className="font-display font-bold text-[15px] text-ink leading-snug mb-0.5">
-        {name}
-      </div>
-      <div className="flex items-center gap-2 mb-1.5">
-        {img && (
-          <img src={img} alt={company} className="w-4 h-4 rounded-sm object-cover" />
-        )}
-        <div className="text-[13px] text-ink-light font-medium">{company}</div>
-      </div>
-      <div className="text-[13px] text-ink-light leading-relaxed">{description}</div>
-    </div>
+    </li>
   );
 };

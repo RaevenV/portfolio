@@ -1,57 +1,113 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap");
+/* Hallmark · genre: editorial · macrostructure: Long Document · theme: custom (warm-ivory · rust)
+ * enrichment: none · nav: N6 masthead · footer: Ft6 letter-close
+ * tone: editorial/print · anchor hue: warm 40–85 · pre-emit critique: P5 H4 E5 S4 R5 V5
+ */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap");
+@import "../tokens.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --ink: #141420;
-  --ink-light: #48486a;
-  --surface: #f5f3ef;
-  --surface-alt: #eceae4;
-  --accent: #212447;
-  --border: #d8d4cc;
+@layer base {
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-style: normal;               /* editorial rule: headers are always roman */
+    font-optical-sizing: auto;
+    color: var(--color-ink);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
 }
 
-html {
-  scroll-behavior: smooth;
+@layer components {
+  /* Editorial eyebrow / label — mono small-caps, letterspaced */
+  .h-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  /* Typographic link — draws its underline on hover/focus, instant on focus */
+  .h-link {
+    position: relative;
+    color: var(--color-ink);
+    text-decoration: none;
+    background-image: linear-gradient(var(--color-accent), var(--color-accent));
+    background-size: 0% var(--rule-hair);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
+  }
+  .h-link:hover { background-size: 100% var(--rule-hair); color: var(--color-accent); }
+  .h-link:focus-visible { background-size: 100% var(--rule-hair); }
+
+  /* Quiet, single orchestrated entrance for the hero */
+  .h-rise {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: h-rise var(--dur-med) var(--ease-out) forwards;
+  }
+  .h-rise-2 { animation-delay: 90ms; }
+  .h-rise-3 { animation-delay: 180ms; }
+
+  @keyframes h-rise {
+    to { opacity: 1; transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .h-rise, .h-rise-2, .h-rise-3 {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
 
-body {
-  background-color: var(--surface);
-  color: var(--ink);
-  font-family: "DM Sans", sans-serif;
-}
+/* Tinted scrollbar — matches the paper/ink system, not default grey */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-paper-2); }
+::-webkit-scrollbar-thumb { background: var(--color-ink-2); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-ink); }
 
-/* Grain overlay — fixed so it covers the full page */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  opacity: 1;
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: var(--surface-alt);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 2px;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
